@@ -1,0 +1,50 @@
+# https://github.com/geerlingguy/ansible-role-php
+
+php_use_managed_ini: true
+php_memory_limit: "128M"
+php_max_execution_time: "90"
+php_upload_max_filesize: "256M"
+
+php_memory_limit: "256M"
+php_max_execution_time: "60"
+php_max_input_time: "60"
+php_max_input_vars: "1000"
+php_realpath_cache_size: "32K"
+php_file_uploads: "On"
+php_upload_max_filesize: "64M"
+php_max_file_uploads: "20"
+php_post_max_size: "32M"
+php_date_timezone: "Africa/Lagos"
+php_allow_url_fopen: "On"
+php_sendmail_path: "/usr/sbin/sendmail -t -i"
+php_output_buffering: "4096"
+php_short_open_tag: false
+php_error_reporting: "E_ALL & ~E_DEPRECATED & ~E_STRICT"
+php_display_errors: "Off"
+php_display_startup_errors: "On"
+php_expose_php: "On"
+php_session_cookie_lifetime: 0
+php_session_gc_probability: 1
+php_session_gc_divisor: 1000
+php_session_gc_maxlifetime: 1440
+php_session_save_handler: files
+php_session_save_path: ''
+php_disable_functions: []
+php_precision: 14
+php_serialize_precision: "-1"
+
+php_packages:
+  - libapache2-mod-php8.1
+  - php-bcmath 
+  - php-cli 
+  - php-common 
+  - php-curl 
+  - php-dev 
+  - php-gd 
+  - php-intl 
+  - php-json 
+  - php-mbstring 
+  - php-mysql 
+  - php-readline 
+  - php-xml 
+  - php-zip
