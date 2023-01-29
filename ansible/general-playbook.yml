@@ -9,20 +9,18 @@
         name: Africa/Lagos
     - name: install git
       apt: name=git update_cache=yes state=latest
-    - name: Creates default Laravel directory
+    - name: "Create required directories in for webserver"
       file:
-        path: /var/www/html/public
+        path: "{{ item }}"
         state: directory
-    - name: Creates default logs directory
-      file:
-        path: /opt/glade/logs
-        state: directory
-    - name: Creates default keys directory
-      file:
-        path: /opt/glade/keys
-        state: directory
-    - name: create sample file
-      shell: echo "<?php phpinfo();" > /var/www/html/public/index.php
+        owner: root
+        group: root
+        mode: u=rwx,g=x,o=x
+      with_items:
+      - /var/www/html/public
+      - /opt/glade/logs
+      - /opt/glade/ssl
+      - /opt/glade/keys
     - name: create default ssl directory
       file:
         path: /opt/glade/ssl
