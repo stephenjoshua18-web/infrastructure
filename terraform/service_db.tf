@@ -1,78 +1,78 @@
-resource "aws_instance" "core_service_1" {
+resource "aws_instance" "db_service_1" {
   ami           = data.aws_ami.ubuntu.id 
   instance_type = data.aws_ec2_instance_type.glade_instance_md.instance_type 
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
-  security_groups = [ aws_security_group.default-glade-services-sg.id ]
+  security_groups = [ aws_security_group.sg-glade-production.id ]
   tags = {
-    Name = "core_service_1"
+    Name = "db_service_1"
   }
 
 }
 
 
-resource "aws_route53_record" "core_internal_dns_1" {
+resource "aws_route53_record" "db_internal_dns_1" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "1-core-internal-prod-aws.glade.ng"
+  name    = "1-db-internal-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.core_service_1.public_ip]
+  records = [aws_instance.db_service_1.private_ip]
 }
 
 
-resource "aws_instance" "core_service_2" {
+resource "aws_instance" "db_service_2" {
   ami           = data.aws_ami.ubuntu.id 
   instance_type = data.aws_ec2_instance_type.glade_instance_md.instance_type 
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
-  security_groups = [ aws_security_group.default-glade-services-sg.id ]
+  security_groups = [ aws_security_group.sg-glade-production.id ]
   tags = {
-    Name = "core_service_2"
+    Name = "db_service_2"
   }
 
 }
 
 
 
-resource "aws_route53_record" "core_internal_dns_2" {
+resource "aws_route53_record" "db_internal_dns_2" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "2-core-internal-prod-aws.glade.ng"
+  name    = "2-db-internal-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.core_service_2.public_ip]
+  records = [aws_instance.db_service_2.private_ip]
 }
 
-resource "aws_instance" "core_service_3" {
+resource "aws_instance" "db_service_3" {
   ami           = data.aws_ami.ubuntu.id 
   instance_type = data.aws_ec2_instance_type.glade_instance_md.instance_type 
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
-  security_groups = [ aws_security_group.default-glade-services-sg.id ]
+  security_groups = [ aws_security_group.sg-glade-production.id ]
   tags = {
-    Name = "core_service_3"
+    Name = "db_service_3"
   }
 
 }
 
 
-resource "aws_route53_record" "core_internal_dns_3" {
+resource "aws_route53_record" "db_internal_dns_3" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "3-core-internal-prod-aws.glade.ng"
+  name    = "3-db-internal-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.core_service_3.public_ip
+  records = [aws_instance.db_service_3.private_ip
   ]
 }
 
 # Create a new load balancer
-resource "aws_elb" "core-service-elb" {
-  name               = "core-service-elb"
+resource "aws_elb" "db-service-elb" {
+  name               = "db-service-elb"
   #availability_zones = ["eu-west-1b"]
   subnets            = [aws_default_subnet.default_subnet.id]
 
   access_logs {
     bucket        = "glade-elb-logs"
-    bucket_prefix = "core_elb"
+    bucket_prefix = "db_elb"
     interval      = 60
   }
 
@@ -92,24 +92,24 @@ resource "aws_elb" "core-service-elb" {
     interval            = 30
   }
 
-  instances                   = [aws_instance.core_service_1.id, aws_instance.core_service_2.id, aws_instance.core_service_3.id]
+  instances                   = [aws_instance.db_service_1.id, aws_instance.db_service_2.id, aws_instance.db_service_3.id]
   idle_timeout                = 400
   connection_draining         = true
   connection_draining_timeout = 400
 
   tags = {
-    Name = "core-service-elb"
+    Name = "db-service-elb"
   }
 }
 
-resource "aws_route53_record" "core-service-external-dns-lb" {
+resource "aws_route53_record" "db-service-external-dns-lb" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "core-external-prod-aws.glade.ng"
+  name    = "db-external-prod-aws.glade.ng"
   type    = "A"
 
   alias {
-    name                   = aws_elb.core-service-elb.dns_name
-    zone_id                = aws_elb.core-service-elb.zone_id
+    name                   = aws_elb.db-service-elb.dns_name
+    zone_id                = aws_elb.db-service-elb.zone_id
     evaluate_target_health = true
   }
 }

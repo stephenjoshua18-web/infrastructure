@@ -1,0 +1,123 @@
+# Role link: https://galaxy.ansible.com/geerlingguy/apache
+# Github Repo: https://github.com/geerlingguy/ansible-role-apache
+
+apache_state: started
+apache_enabled: yes
+apache_listen_ip: "*"
+apache_listen_port: 80
+apache_listen_port_ssl: 443
+apache_create_vhosts: true
+apache_remove_default_vhost: false
+apache_global_vhost_settings: |
+  DirectoryIndex index.php index.html
+  SetEnv HTTP_GLADE_ENV {{glade_env}}
+  SetEnv HTTP_VERIF_HASH axXYN84lrqfRglG7o0203
+  # Add other global settings on subsequent lines.
+
+apache_vhosts_ssl:
+  - servername: 'core-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/core/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+  
+  - servername: 'db-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/db/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+  
+  - servername: 'webhook-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/webhook/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  - servername: 'checkout-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/checkout/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  - servername: 'qc-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/qc/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  - servername: 'external-api-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/external-api/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+  
+  - servername: 'mobile-api-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/mobile-api/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  - servername: 'dashboard-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/dashboard/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  - servername: 'dashboard-api-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/dashboard-api/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  - servername: 'office-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/office/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  - servername: 'office-api-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/office-api/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+apache_allow_override: "All"
+apache_options: "-Indexes +FollowSymLinks"
+apache_ignore_missing_ssl_certificate: true
+apache_mods_enabled:
+  - rewrite
+  - ssl
+apache_mods_disabled: []

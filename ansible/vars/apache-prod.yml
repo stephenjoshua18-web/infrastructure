@@ -14,14 +14,6 @@ apache_global_vhost_settings: |
   SetEnv HTTP_VERIF_HASH axXYN84lrqfRglG7o0203
   # Add other global settings on subsequent lines.
 
-apache_vhosts:
-  # Additional optional properties: 'serveradmin, serveralias, extra_parameters'.
-  - servername: '{{server_name}}'
-    documentroot: '{{server_dir}}'
-    extra_parameters: |
-      ErrorLog ${APACHE_LOG_DIR}/error.log
-      CustomLog ${APACHE_LOG_DIR}/access.log combined
-
 apache_vhosts_ssl:
   - servername: '{{server_name}}'
     documentroot: '{{server_dir}}'

@@ -41,3 +41,10 @@ scrape_configs:
        job: apache
        host: {{glade_host_name}}
        __path__: /var/log/apache2/*.log
+
+  - job_name: glade_logs
+    static_configs:
+    - labels:
+       job: glade_logs
+       host: {{glade_host_name}}
+       __path__: /opt/glade/logs/*/*.log

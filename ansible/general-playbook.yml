@@ -1,6 +1,6 @@
 ---
 - name: Base Server Setup
-  hosts: core
+  hosts: all
   remote_user: ubuntu
   become: true
   tasks:
@@ -19,7 +19,6 @@
       with_items:
       - /var/www/html/public
       - /opt/glade/logs
-      - /opt/glade/ssl
       - /opt/glade/keys
     - name: create default ssl directory
       file:
@@ -33,6 +32,62 @@
         dest: /opt/glade/ssl
         mode: 0600
 
+- name: Setup Apache on sandbox Servers
+  hosts: sandbox-servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: sandbox
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on testing Servers
+  hosts: testing-servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: testing
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on canary Servers
+  hosts: canary-servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: canary
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on staging Servers
+  hosts: staging-servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: staging
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on experiment Servers
+  hosts: experiment-servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: experiment
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+
 - name: Setup Apache on Core Servers
   hosts: core
   remote_user: ubuntu
@@ -45,8 +100,117 @@
   roles:
     - { role: geerlingguy.apache }
 
+- name: Setup Apache on DB Servers
+  hosts: db
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: db-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on dashboard Servers
+  hosts: dashboard
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: dashboard-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on dashboard api Servers
+  hosts: dashboard
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: dashboard-api-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on office Servers
+  hosts: office
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: office-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on office api Servers
+  hosts: office
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: office-api-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on qc Servers
+  hosts: qc
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: qc-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on webhook Servers
+  hosts: webhook
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: webhoook-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on mobile Servers
+  hosts: mobile
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: mobile-api-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+
+- name: Setup Apache on external api Servers
+  hosts: external
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: external-api-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
 - name: Setup PHP Server
-  hosts: core
+  hosts: all
   remote_user: ubuntu
   become: true
   vars_files:
@@ -58,7 +222,7 @@
     - geerlingguy.php
 
 - name: grafana monitoring
-  hosts: core
+  hosts: all
   remote_user: ubuntu
   become: true
   vars:
