@@ -300,17 +300,6 @@
         - loki
       when: (not binary.stat.exists)
 
-    - name: update promtail if different version is defined in variable
-      ansible.builtin.unarchive:
-        src: "https://github.com/grafana/loki/releases/download/v\
-            {{  promtail_version  }}/promtail-linux-amd64.zip"
-        dest: /usr/bin/
-        remote_src: true
-      tags:
-        - loki
-      when: (promtail_version_check | regex_search('\d.\d+.\d+') != promtail_version)
-      notify: restart promtail
-
     - name: template systemd unit file
       ansible.builtin.template:
         src: templates/promtail.service.j2
