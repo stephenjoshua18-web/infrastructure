@@ -12,7 +12,7 @@ before_script:
     - export ANSIBLE_INVENTORY=./hosts-inventory
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d ' ' | base64 --decode | ssh-add -
+    - echo "$SSH_KEY_PRIVATE" | tr -d ' ' | base64 --decode | ssh-add -
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     
