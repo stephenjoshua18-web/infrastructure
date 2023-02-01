@@ -16,7 +16,7 @@ resource "aws_route53_record" "core_internal_dns_1" {
   name    = "1-core-internal-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.core_service_1.pivate_ip]
+  records = [aws_instance.core_service_1.private_ip]
 }
 
 
@@ -39,7 +39,7 @@ resource "aws_route53_record" "core_internal_dns_2" {
   name    = "2-core-internal-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.core_service_2.pivate_ip]
+  records = [aws_instance.core_service_2.private_ip]
 }
 
 resource "aws_instance" "core_service_3" {
@@ -60,7 +60,7 @@ resource "aws_route53_record" "core_internal_dns_3" {
   name    = "3-core-internal-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.core_service_3.pivate_ip
+  records = [aws_instance.core_service_3.private_ip
   ]
 }
 
