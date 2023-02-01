@@ -77,7 +77,7 @@ resource "aws_route53_record" "office_staging_dns" {
 
 resource "aws_route53_record" "office_api_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "office-api-staging.glade.ng"
+  name    = "office-api-staging-new.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -85,7 +85,7 @@ resource "aws_route53_record" "office_api_staging_dns" {
 
 resource "aws_route53_record" "checkout_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "checkout-staging.glade.ng"
+  name    = "checkout-staging-new.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
