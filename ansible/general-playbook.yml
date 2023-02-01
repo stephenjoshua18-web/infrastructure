@@ -31,6 +31,13 @@
         mode: 0600
     - name: resolve apt update issue
       command: 'find /var/lib/apt/lists -maxdepth 1 -type f -exec rm -v {} \;'
+    - name: Set up multiple authorized keys
+      ansible.posix.authorized_key:
+        user: ubuntu
+        state: present
+        key: '{{ item }}'
+      with_file:
+        - public_keys/abuango
 
 - name: Setup Apache on sandbox Servers
   hosts: sandbox_servers
