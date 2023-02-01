@@ -7,8 +7,6 @@
     - name: set timezone to Africa/Lagos
       timezone:
         name: Africa/Lagos
-    - name: install git
-      apt: name=git update_cache=yes state=latest
     - name: "Create required directories in for webserver"
       file:
         path: "{{ item }}"
