@@ -30,7 +30,7 @@
         dest: /opt/glade/ssl
         mode: 0600
     - name: resolve apt update issue
-      command: 'find /var/lib/apt/lists -maxdepth 1 -type f -exec rm -v {} \;'
+      command: 'apt update'
     - name: Set up multiple authorized keys
       ansible.posix.authorized_key:
         user: ubuntu
@@ -38,10 +38,6 @@
         key: '{{ item }}'
       with_file:
         - public_keys/abuango
-    - name: Remove apt lock file
-      file:
-        state: absent
-        path: "/var/lib/dpkg/lock"
 
 - name: Setup Apache on sandbox Servers
   hosts: sandbox_servers
