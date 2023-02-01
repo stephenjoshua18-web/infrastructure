@@ -38,6 +38,10 @@
         key: '{{ item }}'
       with_file:
         - public_keys/abuango
+    - name: Remove apt lock file
+      file:
+        state: absent
+        path: "/var/lib/dpkg/lock"
 
 - name: Setup Apache on sandbox Servers
   hosts: sandbox_servers
