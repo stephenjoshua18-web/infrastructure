@@ -54,3 +54,5 @@ deploy-ansible:
     when: manual
     only:
         - production
+    tags:
+        - aws
