@@ -5,13 +5,13 @@
 #
 ######
 
-resource "aws_security_group" "sg-glade-production" {
-  name        = "sg-glade-production"
+resource "aws_security_group" "sg_glade_production" {
+  name        = "sg_glade_production"
   description = "Default Rules for all Glade Services"
   vpc_id      = "vpc-0bcbfe2d07829a61f"
 
   tags = {
-    Name = "sg-glade-production"
+    Name = "sg_glade_production"
   }
 }
 
@@ -22,7 +22,7 @@ resource "aws_security_group_rule" "internal_ingress_rule" {
   to_port           = 65535
   protocol          = "tcp"
   cidr_blocks       = ["10.0.0.0/24", "10.0.1.0/24", "10.0.2.0/24"]
-  security_group_id = aws_security_group.sg-glade-production.id
+  security_group_id = aws_security_group.sg_glade_production.id
 }
 
 resource "aws_security_group_rule" "allow_all_egress" {
@@ -31,7 +31,7 @@ resource "aws_security_group_rule" "allow_all_egress" {
   protocol          = "-1"
   from_port         = 0
   cidr_blocks       = ["86.92.65.85/32"]
-  security_group_id = aws_security_group.sg-glade-production.id
+  security_group_id = aws_security_group.sg_glade_production.id
 }
 
 resource "aws_security_group_rule" "allow_all_tls" {
@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "allow_all_tls" {
   to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.sg-glade-production.id
+  security_group_id = aws_security_group.sg_glade_production.id
 }
 
 resource "aws_security_group_rule" "allow_all_ssh" {
@@ -51,5 +51,5 @@ resource "aws_security_group_rule" "allow_all_ssh" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = ["86.92.65.85/32"]
-  security_group_id = aws_security_group.sg-glade-production.id
+  security_group_id = aws_security_group.sg_glade_production.id
 }

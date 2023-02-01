@@ -3,7 +3,7 @@ resource "aws_instance" "webhook_service" {
   instance_type = data.aws_ec2_instance_type.glade_instance_md.instance_type 
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
-  security_groups = [ aws_security_group.sg-glade-production.id ]
+  security_groups = [ aws_security_group.sg_glade_production.id ]
   tags = {
     Name = "webhook_service"
   }
