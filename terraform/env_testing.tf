@@ -29,7 +29,7 @@ resource "aws_route53_record" "testing_external_dns" {
 
 resource "aws_route53_record" "core_testing_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "core-testing.glade.ng"
+  name    = "core-testing-new.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.testing.public_ip]
@@ -37,7 +37,7 @@ resource "aws_route53_record" "core_testing_dns" {
 
 resource "aws_route53_record" "db_testing_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "db-testing.glade.ng"
+  name    = "db-testing-new.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.testing.public_ip]
@@ -45,7 +45,7 @@ resource "aws_route53_record" "db_testing_dns" {
 
 resource "aws_route53_record" "webhook_testing_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "webhook-testing.glade.ng"
+  name    = "webhook-testing-new.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.testing.public_ip]
@@ -53,7 +53,7 @@ resource "aws_route53_record" "webhook_testing_dns" {
 
 resource "aws_route53_record" "dashboard_api_testing_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "dashboard-api-testing.glade.ng"
+  name    = "dashboard-api-testing-new.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.testing.public_ip]
@@ -61,7 +61,7 @@ resource "aws_route53_record" "dashboard_api_testing_dns" {
 
 resource "aws_route53_record" "dashboard_testing_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "dashboard-testing.glade.ng"
+  name    = "dashboard-testing-new.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.testing.public_ip]
@@ -69,7 +69,7 @@ resource "aws_route53_record" "dashboard_testing_dns" {
 
 resource "aws_route53_record" "office_testing_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "office-testing.glade.ng"
+  name    = "office-testing-new.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.testing.public_ip]

@@ -1,0 +1,54 @@
+image: git.glade.ng:5050/engineering/docker-images/infra:latest
+
+stages:
+    - review
+    - deploy-terraform
+    - deploy-ansible
+    - destroy
+
+before_script:
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    - export ANSIBLE_INVENTORY=./hosts-inventory
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d ' ' | base64 --decode | ssh-add -
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    
+
+review:
+    stage: review
+    script:
+        - cd terraform
+        - terraform init
+        - terraform import aws_route53_zone.gladeng_zone Z2M1GHM1S2WEPM
+        - terraform import aws_default_vpc.gladepay-net vpc-0bcbfe2d07829a61f
+        - terraform import aws_default_subnet.default_subnet subnet-06ddd87b2bb107eb7
+        - terraform fmt
+        - terraform validate
+        - terraform plan
+      
+deploy-terraform:
+    stage: deploy-terraform
+    script:
+        - cd terraform
+        - terraform init
+        - terraform import aws_route53_zone.gladeng_zone Z2M1GHM1S2WEPM
+        - terraform import aws_default_vpc.gladepay-net vpc-0bcbfe2d07829a61f
+        - terraform import aws_default_subnet.default_subnet subnet-06ddd87b2bb107eb7
+        - terraform apply -auto-approve
+    when: manual
+    only:
+        - production
+
+deploy-ansible:
+    stage: deploy-ansible
+    script:
+        - cd ansible
+        - ansible all -m ping --user ubuntu
+        - ansible all -m setup --user ubuntu
+        - ansible-playbook general-playblook.yml
+    when: manual
+    only:
+        - production
