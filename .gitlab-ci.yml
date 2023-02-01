@@ -48,6 +48,7 @@ deploy-ansible:
     script:
         - cd ansible
         - ansible-galaxy collection install ansible.posix
+        - ansible all --list-hosts
         - ansible all -m ping --user ubuntu
         - ansible all -m setup --user ubuntu
         - ansible-playbook general-playbook.yml -i ansible_inventory.ini
