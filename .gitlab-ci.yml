@@ -47,6 +47,7 @@ deploy-ansible:
     stage: deploy-ansible
     script:
         - cd ansible
+        - ansible-galaxy collection install ansible.posix
         - ansible all -m ping --user ubuntu
         - ansible all -m setup --user ubuntu
         - ansible-playbook general-playbook.yml
