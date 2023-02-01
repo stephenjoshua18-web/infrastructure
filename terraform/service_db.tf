@@ -70,11 +70,11 @@ resource "aws_elb" "db-service-elb" {
   #availability_zones = ["eu-west-1b"]
   subnets            = [aws_default_subnet.default_subnet.id]
 
-  access_logs {
-    bucket        = "glade-elb-logs"
-    bucket_prefix = "db_elb"
-    interval      = 60
-  }
+  #access_logs {
+  #  bucket        = "glade-elb-logs"
+  #  bucket_prefix = "db_elb"
+  #  interval      = 60
+  #}
 
   listener {
     instance_port      = 443
