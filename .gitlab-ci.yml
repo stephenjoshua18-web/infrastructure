@@ -48,7 +48,7 @@ deploy-ansible:
         - cd ansible
         - ansible all -m ping --user ubuntu
         - ansible all -m setup --user ubuntu
-        - ansible-playbook general-playblook.yml
+        - ansible-playbook general-playbook.yml
     when: manual
     only:
         - production
