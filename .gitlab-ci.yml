@@ -51,7 +51,7 @@ deploy-ansible:
         - ansible all --list-hosts
         - ansible all -m ping --user ubuntu
         - ansible all -m setup --user ubuntu
-        - ansible-playbook general-playbook.yml -i ansible_inventory.ini
+        - ansible-playbook general-playblook.yml --extra-vars "gitlab_pat=$GITLAB_PAT"
     when: manual
     only:
         - production
