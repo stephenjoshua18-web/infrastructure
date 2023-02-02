@@ -80,7 +80,7 @@
     gitlab_pat: 
   tasks:
     - name: Trigger Pipelines for testing
-      command: '"curl --request POST --header "PRIVATE-TOKEN: {{ gitlab_pat }}" "https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=testing"'
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=testing'"
       with_items:
         - 317 #core
         - 316 #db
