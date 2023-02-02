@@ -9,7 +9,7 @@ stages:
 before_script:
     - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
     - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-    - export ANSIBLE_INVENTORY=./hosts-inventory
+    - export ANSIBLE_INVENTORY=./ansible_inventory.ini
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
     - echo "$SSH_KEY_PRIVATE" | tr -d ' ' | base64 --decode | ssh-add -
@@ -28,6 +28,7 @@ review:
         - terraform fmt
         - terraform validate
         - terraform plan
+    when: manual
       
 deploy-terraform:
     stage: deploy-terraform
@@ -46,9 +47,13 @@ deploy-ansible:
     stage: deploy-ansible
     script:
         - cd ansible
+        - ansible-galaxy collection install ansible.posix
+        - ansible all --list-hosts
         - ansible all -m ping --user ubuntu
         - ansible all -m setup --user ubuntu
-        - ansible-playbook general-playblook.yml
+        - ansible-playbook general-playbook.yml -i ansible_inventory.ini
     when: manual
     only:
         - production
+    tags:
+        - aws
