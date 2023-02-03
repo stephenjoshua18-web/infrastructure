@@ -259,6 +259,14 @@
     - geerlingguy.php-versions
     - geerlingguy.php
 
+- name: Trigger Secrets Deployment
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Restart Apache
+      command: "systemctl restart apache2"
+
 - name: grafana monitoring
   hosts: all
   remote_user: ubuntu
