@@ -139,7 +139,7 @@
     - { role: geerlingguy.apache }
 
 - name: Setup Apache on DB Servers
-  hosts: db
+  hosts: db_service
   remote_user: ubuntu
   become: true
   vars:
@@ -168,6 +168,18 @@
   become: true
   vars:
     server_name: dashboard-api-external-prod-aws.glade.ng
+    server_dir: /var/www/html/public
+  vars_files:
+    - vars/apache-prod.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on checkout Servers
+  hosts: checkout
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: checkout-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
     - vars/apache-prod.yml
@@ -236,7 +248,7 @@
 
 
 - name: Setup Apache on external api Servers
-  hosts: external
+  hosts: external_api
   remote_user: ubuntu
   become: true
   vars:
