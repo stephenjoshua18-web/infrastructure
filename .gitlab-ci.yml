@@ -22,9 +22,6 @@ review:
     script:
         - cd terraform
         - terraform init
-        #- terraform import aws_route53_zone.gladeng_zone Z2M1GHM1S2WEPM
-        #- terraform import aws_default_vpc.gladepay-net vpc-0bcbfe2d07829a61f
-        #- terraform import aws_default_subnet.default_subnet subnet-06ddd87b2bb107eb7
         - terraform fmt
         - terraform validate
         - terraform plan
@@ -35,9 +32,6 @@ deploy-terraform:
     script:
         - cd terraform
         - terraform init
-        #- terraform import aws_route53_zone.gladeng_zone Z2M1GHM1S2WEPM
-        #- terraform import aws_default_vpc.gladepay-net vpc-0bcbfe2d07829a61f
-        #- terraform import aws_default_subnet.default_subnet subnet-06ddd87b2bb107eb7
         - terraform apply -auto-approve
     when: manual
     only:
