@@ -38,7 +38,13 @@
         key: '{{ item }}'
       with_file:
         - public_keys/abuango
-
+- name: Set Glade Log Permissions
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Set Glade Log Permissions
+      command: "chmod -R 777 /opt/glade/logs"
 - name: Setup Apache on sandbox Servers
   hosts: sandbox_servers
   remote_user: ubuntu
