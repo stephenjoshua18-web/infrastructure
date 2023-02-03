@@ -23,6 +23,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
 apache_allow_override: "All"
 apache_options: "-Indexes +FollowSymLinks"

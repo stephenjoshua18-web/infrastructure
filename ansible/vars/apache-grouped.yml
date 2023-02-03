@@ -23,6 +23,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
   
   - servername: 'db-{{glade_env}}.glade.ng'
     documentroot: '/var/www/db/public'
@@ -32,6 +33,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
   
   - servername: 'webhook-{{glade_env}}.glade.ng'
     documentroot: '/var/www/webhook/public'
@@ -41,6 +43,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
   - servername: 'checkout-{{glade_env}}.glade.ng'
     documentroot: '/var/www/checkout/public'
@@ -50,6 +53,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
   - servername: 'qc-{{glade_env}}.glade.ng'
     documentroot: '/var/www/qc/public'
@@ -59,6 +63,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
   - servername: 'external-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/external-api/public'
@@ -68,6 +73,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
   
   - servername: 'mobile-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/mobile-api/public'
@@ -77,6 +83,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
   - servername: 'dashboard-{{glade_env}}.glade.ng'
     documentroot: '/var/www/dashboard'
@@ -86,6 +93,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
   - servername: 'dashboard-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/dashboard-api/public'
@@ -95,6 +103,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
   - servername: 'office-{{glade_env}}.glade.ng'
     documentroot: '/var/www/office'
@@ -104,6 +113,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
   - servername: 'office-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/office-api/public'
@@ -113,6 +123,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
 
 apache_allow_override: "All"
 apache_options: "-Indexes +FollowSymLinks"
