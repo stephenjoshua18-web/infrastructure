@@ -51,7 +51,7 @@
     - { role: geerlingguy.apache }
 
 - name: Setup Apache on testing Servers
-  hosts: testing_servers
+  hosts: test_servers
   remote_user: ubuntu
   become: true
   vars:
@@ -60,77 +60,6 @@
     - vars/apache-grouped.yml
   roles:
     - { role: geerlingguy.apache }
-
-- name: Trigger Secrets Deployment
-  hosts: localhost
-  vars:
-    ansible_connection: local
-    ansible_python_interpreter: "{{ ansible_playbook_python }}"
-    keys_manager_project: 138
-  tasks:
-    - name: Trigger Pipelines for Secrets
-      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ keys_manager_project }}/pipeline?ref=master'"
-
-
-- name: Trigger Testing Branch pipelines
-  hosts: localhost
-  vars:
-    ansible_connection: local
-    ansible_python_interpreter: "{{ ansible_playbook_python }}"
-    gitlab_pat: 
-  tasks:
-    - name: Trigger Pipelines for testing
-      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=testing'"
-      with_items:
-        - 317 #core
-        - 316 #db
-        - 345 #webhoook
-        - 344 #checkout
-        - 322 #dashboard-api
-        - 320 #office
-        - 328 #office-api
-        - 306 #dashboard
-        - 315 #external-api
-
-- name: Trigger sandbox Branch pipelines
-  hosts: localhost
-  vars:
-    ansible_connection: local
-    ansible_python_interpreter: "{{ ansible_playbook_python }}"
-    gitlab_pat: 
-  tasks:
-    - name: Trigger Pipelines for sandbox
-      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=sandbox'"
-      with_items:
-        - 317 #core
-        - 316 #db
-        - 345 #webhoook
-        - 344 #checkout
-        - 322 #dashboard-api
-        - 320 #office
-        - 328 #office-api
-        - 306 #dashboard
-        - 315 #external-api
-
-- name: Trigger staging Branch pipelines
-  hosts: localhost
-  vars:
-    ansible_connection: local
-    ansible_python_interpreter: "{{ ansible_playbook_python }}"
-    gitlab_pat: 
-  tasks:
-    - name: Trigger Pipelines for staging
-      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=staging'"
-      with_items:
-        - 317 #core
-        - 316 #db
-        - 345 #webhoook
-        - 344 #checkout
-        - 322 #dashboard-api
-        - 320 #office
-        - 328 #office-api
-        - 306 #dashboard
-        - 315 #external-api
 
 - name: Setup Apache on canary Servers
   hosts: canary_servers
@@ -326,6 +255,79 @@
   tasks:
     - name: Restart Apache
       command: "systemctl restart apache2"
+
+
+- name: Trigger Secrets Deployment
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    keys_manager_project: 138
+  tasks:
+    - name: Trigger Pipelines for Secrets
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ keys_manager_project }}/pipeline?ref=master'"
+
+
+- name: Trigger Testing Branch pipelines
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    gitlab_pat: 
+  tasks:
+    - name: Trigger Pipelines for testing
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=testing'"
+      with_items:
+        - 317 #core
+        - 316 #db
+        - 345 #webhoook
+        - 344 #checkout
+        - 322 #dashboard-api
+        - 320 #office
+        - 328 #office-api
+        - 306 #dashboard
+        - 315 #external-api
+
+- name: Trigger sandbox Branch pipelines
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    gitlab_pat: 
+  tasks:
+    - name: Trigger Pipelines for sandbox
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=sandbox'"
+      with_items:
+        - 317 #core
+        - 316 #db
+        - 345 #webhoook
+        - 344 #checkout
+        - 322 #dashboard-api
+        - 320 #office
+        - 328 #office-api
+        - 306 #dashboard
+        - 315 #external-api
+
+- name: Trigger staging Branch pipelines
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    gitlab_pat: 
+  tasks:
+    - name: Trigger Pipelines for staging
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=staging'"
+      with_items:
+        - 317 #core
+        - 316 #db
+        - 345 #webhoook
+        - 344 #checkout
+        - 322 #dashboard-api
+        - 320 #office
+        - 328 #office-api
+        - 306 #dashboard
+        - 315 #external-api
+
 
 - name: grafana monitoring
   hosts: all
