@@ -32,16 +32,15 @@ php_versions_install_recommends: false
 
 php_packages:
   - libapache2-mod-php8.0
-  - php-bcmath 
-  - php-cli 
-  - php-common 
-  - php-curl 
-  - php-dev 
-  - php-gd 
-  - php-intl 
-  - php-json 
-  - php-mbstring 
-  - php-mysql 
-  - php-readline 
-  - php-xml 
-  - php-zip
+  - php8.0-bcmath 
+  - php8.0-cli 
+  - php8.0-common 
+  - php8.0-curl 
+  - php8.0-dev 
+  - php8.0-gd 
+  - php8.0-intl 
+  - php8.0-mbstring 
+  - php8.0-mysql 
+  - php8.0-readline 
+  - php8.0-xml 
+  - php8.0-zip
