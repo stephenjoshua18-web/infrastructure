@@ -254,7 +254,7 @@
   vars_files:
     - vars/php-prod.yml
   vars:
-    php_version: '8.1'
+    php_version: '8.0'
   roles:
     - geerlingguy.php-versions
     - geerlingguy.php
