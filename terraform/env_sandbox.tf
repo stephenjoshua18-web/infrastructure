@@ -29,7 +29,7 @@ resource "aws_route53_record" "sandbox_external_dns" {
 
 resource "aws_route53_record" "core_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "core-sandbox-new.glade.ng"
+  name    = "core-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -37,7 +37,7 @@ resource "aws_route53_record" "core_sandbox_dns" {
 
 resource "aws_route53_record" "db_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "db-sandbox-new.glade.ng"
+  name    = "db-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -45,7 +45,7 @@ resource "aws_route53_record" "db_sandbox_dns" {
 
 resource "aws_route53_record" "webhook_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "webhook-sandbox-new.glade.ng"
+  name    = "webhook-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -53,7 +53,7 @@ resource "aws_route53_record" "webhook_sandbox_dns" {
 
 resource "aws_route53_record" "dashboard_api_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "dashboard-api-sandbox-new.glade.ng"
+  name    = "dashboard-api-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -61,7 +61,7 @@ resource "aws_route53_record" "dashboard_api_sandbox_dns" {
 
 resource "aws_route53_record" "dashboard_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "dashboard-sandbox-new.glade.ng"
+  name    = "dashboard-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -69,7 +69,7 @@ resource "aws_route53_record" "dashboard_sandbox_dns" {
 
 resource "aws_route53_record" "office_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "office-sandbox-new.glade.ng"
+  name    = "office-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -77,7 +77,7 @@ resource "aws_route53_record" "office_sandbox_dns" {
 
 resource "aws_route53_record" "office_api_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "office-api-sandbox-new.glade.ng"
+  name    = "office-api-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -85,7 +85,7 @@ resource "aws_route53_record" "office_api_sandbox_dns" {
 
 resource "aws_route53_record" "checkout_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "checkout-sandbox-new.glade.ng"
+  name    = "checkout-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -93,7 +93,7 @@ resource "aws_route53_record" "checkout_sandbox_dns" {
 
 resource "aws_route53_record" "mobile_api_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "mobile-api-sandbox-new.glade.ng"
+  name    = "mobile-api-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -101,7 +101,7 @@ resource "aws_route53_record" "mobile_api_sandbox_dns" {
 
 resource "aws_route53_record" "qc_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "qc-sandbox-new.glade.ng"
+  name    = "qc-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
@@ -109,7 +109,7 @@ resource "aws_route53_record" "qc_sandbox_dns" {
 
 resource "aws_route53_record" "external_api_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "external-api-sandbox-new.glade.ng"
+  name    = "external-api-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]

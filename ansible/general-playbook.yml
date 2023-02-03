@@ -299,6 +299,14 @@
   roles:
     - { role: geerlingguy.apache }
 
+- name: Purge PHP
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Restart Apache
+      command: "apt purge php* -y"
+
 - name: Setup PHP Server
   hosts: all
   remote_user: ubuntu
@@ -311,7 +319,7 @@
     - geerlingguy.php-versions
     - geerlingguy.php
 
-- name: Trigger Secrets Deployment
+- name: Trigger Apache Restart
   hosts: all
   remote_user: ubuntu
   become: true
