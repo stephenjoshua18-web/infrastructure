@@ -79,7 +79,7 @@ apache_vhosts_ssl:
       CustomLog ${APACHE_LOG_DIR}/access.log combined
 
   - servername: 'dashboard-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/dashboard/public'
+    documentroot: '/var/www/dashboard'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
@@ -97,7 +97,7 @@ apache_vhosts_ssl:
       CustomLog ${APACHE_LOG_DIR}/access.log combined
 
   - servername: 'office-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/office/public'
+    documentroot: '/var/www/office'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"

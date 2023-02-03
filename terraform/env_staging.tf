@@ -29,7 +29,7 @@ resource "aws_route53_record" "staging_external_dns" {
 
 resource "aws_route53_record" "core_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "core-staging-new.glade.ng"
+  name    = "core-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -37,7 +37,7 @@ resource "aws_route53_record" "core_staging_dns" {
 
 resource "aws_route53_record" "db_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "db-staging-new.glade.ng"
+  name    = "db-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -45,7 +45,7 @@ resource "aws_route53_record" "db_staging_dns" {
 
 resource "aws_route53_record" "webhook_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "webhook-staging-new.glade.ng"
+  name    = "webhook-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -53,7 +53,7 @@ resource "aws_route53_record" "webhook_staging_dns" {
 
 resource "aws_route53_record" "dashboard_api_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "dashboard-api-staging-new.glade.ng"
+  name    = "dashboard-api-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -61,7 +61,7 @@ resource "aws_route53_record" "dashboard_api_staging_dns" {
 
 resource "aws_route53_record" "dashboard_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "dashboard-staging-new.glade.ng"
+  name    = "dashboard-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -69,7 +69,7 @@ resource "aws_route53_record" "dashboard_staging_dns" {
 
 resource "aws_route53_record" "office_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "office-staging-new.glade.ng"
+  name    = "office-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -77,7 +77,7 @@ resource "aws_route53_record" "office_staging_dns" {
 
 resource "aws_route53_record" "office_api_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "office-api-staging-new.glade.ng"
+  name    = "office-api-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -85,7 +85,7 @@ resource "aws_route53_record" "office_api_staging_dns" {
 
 resource "aws_route53_record" "checkout_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "checkout-staging-new.glade.ng"
+  name    = "checkout-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -93,7 +93,7 @@ resource "aws_route53_record" "checkout_staging_dns" {
 
 resource "aws_route53_record" "mobile_api_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "mobile-api-staging-new.glade.ng"
+  name    = "mobile-api-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -101,7 +101,7 @@ resource "aws_route53_record" "mobile_api_staging_dns" {
 
 resource "aws_route53_record" "qc_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "qc-staging-new.glade.ng"
+  name    = "qc-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
@@ -109,7 +109,7 @@ resource "aws_route53_record" "qc_staging_dns" {
 
 resource "aws_route53_record" "external_api_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "external-api-staging-new.glade.ng"
+  name    = "external-api-staging.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
