@@ -3,7 +3,7 @@ resource "aws_instance" "db_service_1" {
   instance_type = data.aws_ec2_instance_type.glade_instance_md.instance_type 
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
-  security_groups = [ aws_security_group.sg_glade_production.id ]
+  vpc_security_group_ids = [ aws_security_group.sg_glade_production.id ]
   tags = {
     Name = "db_service_1"
   }
@@ -25,7 +25,7 @@ resource "aws_instance" "db_service_2" {
   instance_type = data.aws_ec2_instance_type.glade_instance_md.instance_type 
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
-  security_groups = [ aws_security_group.sg_glade_production.id ]
+  vpc_security_group_ids = [ aws_security_group.sg_glade_production.id ]
   tags = {
     Name = "db_service_2"
   }
@@ -47,7 +47,7 @@ resource "aws_instance" "db_service_3" {
   instance_type = data.aws_ec2_instance_type.glade_instance_md.instance_type 
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
-  security_groups = [ aws_security_group.sg_glade_production.id ]
+  vpc_security_group_ids = [ aws_security_group.sg_glade_production.id ]
   tags = {
     Name = "db_service_3"
   }
