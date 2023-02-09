@@ -134,6 +134,8 @@ apache_vhosts_ssl:
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
       RewriteEngine on
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteRule ^ index.html [QSA,L]
 
 apache_allow_override: "All"
 apache_options: "-Indexes +FollowSymLinks"
