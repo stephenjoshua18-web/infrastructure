@@ -114,3 +114,11 @@ resource "aws_route53_record" "external_api_testing_dns" {
   ttl     = 300
   records = [aws_instance.testing.public_ip]
 }
+
+resource "aws_route53_record" "pay_testing_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "pay-testing.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.testing.public_ip]
+}

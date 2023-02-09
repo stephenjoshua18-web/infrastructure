@@ -114,3 +114,11 @@ resource "aws_route53_record" "external_api_canary_dns" {
   ttl     = 300
   records = [aws_instance.canary.public_ip]
 }
+
+resource "aws_route53_record" "pay_canary_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "pay-canary.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.canary.public_ip]
+}
