@@ -114,3 +114,11 @@ resource "aws_route53_record" "external_api_sandbox_dns" {
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
 }
+
+resource "aws_route53_record" "pay_sandbox_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "pay-sandbox.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.sandbox.public_ip]
+}
