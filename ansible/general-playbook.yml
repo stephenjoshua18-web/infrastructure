@@ -293,6 +293,7 @@
         - 328 #office-api
         - 306 #dashboard
         - 315 #external-api
+        - 346 #pay-link
 
 - name: Trigger sandbox Branch pipelines
   hosts: localhost
@@ -313,6 +314,7 @@
         - 328 #office-api
         - 306 #dashboard
         - 315 #external-api
+        - 346 #pay-link
 
 - name: Trigger staging Branch pipelines
   hosts: localhost
@@ -333,6 +335,7 @@
         - 328 #office-api
         - 306 #dashboard
         - 315 #external-api
+        - 346 #pay-link
 
 
 - name: grafana monitoring

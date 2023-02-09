@@ -125,6 +125,16 @@ apache_vhosts_ssl:
       CustomLog ${APACHE_LOG_DIR}/access.log combined
       RewriteEngine on
 
+  - servername: 'pay-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/pay/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      RewriteEngine on
+
 apache_allow_override: "All"
 apache_options: "-Indexes +FollowSymLinks"
 apache_ignore_missing_ssl_certificate: true
