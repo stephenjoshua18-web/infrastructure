@@ -26,6 +26,9 @@ review:
         - terraform validate
         - terraform plan
     when: manual
+    tags:
+        - aws
+
       
 deploy-terraform:
     stage: deploy-terraform
@@ -36,6 +39,8 @@ deploy-terraform:
     when: manual
     only:
         - production
+    tags:
+        - aws
 
 deploy-ansible:
     stage: deploy-ansible
