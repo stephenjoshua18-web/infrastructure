@@ -100,6 +100,17 @@
   roles:
     - { role: geerlingguy.apache }
 
+- name: Setup Apache on Pay Servers
+  hosts: pay
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name: pay-external-prod-aws.glade.ng
+    server_dir: /var/www/html/
+  vars_files:
+    - vars/apache-prod-frontend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 - name: Setup Apache on Core Servers
   hosts: core
