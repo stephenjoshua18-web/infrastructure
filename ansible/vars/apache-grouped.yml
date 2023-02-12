@@ -22,6 +22,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
   
   - servername: 'db-{{glade_env}}.glade.ng'
     documentroot: '/var/www/db/public'
@@ -30,6 +32,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
   
   - servername: 'webhook-{{glade_env}}.glade.ng'
     documentroot: '/var/www/webhook/public'
@@ -38,6 +42,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
   - servername: 'checkout-{{glade_env}}.glade.ng'
     documentroot: '/var/www/checkout/public'
@@ -46,6 +52,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
   - servername: 'qc-{{glade_env}}.glade.ng'
     documentroot: '/var/www/qc/public'
@@ -54,6 +62,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
   - servername: 'external-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/external-api/public'
@@ -62,6 +72,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
   
   - servername: 'mobile-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/mobile-api/public'
@@ -70,6 +82,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
   - servername: 'dashboard-{{glade_env}}.glade.ng'
     documentroot: '/var/www/dashboard'
@@ -78,6 +92,32 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+      SetEnv HTTP_GLADE_ENV {{glade_env}}
+      SetEnv REACT_APP_DASHBOARD_BASE_URL https://dashboard-api-{{glade_env}}.glade.ng/api/v2
+      SetEnv REACT_APP_CORE_BASE_URL https://core-{{glade_env}}.glade.ng
+      SetEnv REACT_APP_APP_ENV development
+      SetEnv REACT_APP_CHECKOUT_BASE_URL https://core-{{glade_env}}.glade.ng
+      SetEnv REACT_APP_CHECKOUT_FILE_URL https://core-{{glade_env}}.glade.ng/checkout.js
+      SetEnv REACT_APP_GLADE_PAYMENT_URL https://core-{{glade_env}}.glade.ng/checkout.js
+      SetEnv REACT_APP_PAYMENT_PAGE_BASE_URL https://pay-{{glade_env}}.glade.ng
+      SetEnv REACT_APP_APP_NAME Glade
+      SetEnv REACT_APP_SLUG glade
+      SetEnv REACT_APP_PUBLIC_URL
+      SetEnv REACT_APP_API_URL https://dashboard-api-{{glade_env}}.glade.ng/api/v2/
+      <Directory /var/www/dashboard/>
+            Options FollowSymLinks
+            AllowOverride All
+            Require all granted
+
+            AllowOverride All
+
+            Options -MultiViews
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^ index.html [QSA,L]
+     </Directory>
 
   - servername: 'dashboard-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/dashboard-api/public'
@@ -86,6 +126,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
   - servername: 'office-{{glade_env}}.glade.ng'
     documentroot: '/var/www/office'
@@ -94,6 +136,18 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+      <Directory /var/www/office>
+            Options FollowSymLinks
+            AllowOverride All
+            Require all granted
+
+            Options -MultiViews
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^ index.html [QSA,L]
+        </Directory>
 
   - servername: 'office-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/office-api/public'
@@ -102,6 +156,8 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
   - servername: 'pay-{{glade_env}}.glade.ng'
     documentroot: '/var/www/pay'
@@ -109,6 +165,9 @@ apache_vhosts_ssl:
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
+      RewriteEngine on
+      RewriteCond %{HTTP:X-Forwarded-Proto} !https
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
       <Directory "/var/www/pay">
         AllowOverride All
         Options -Indexes +FollowSymLinks
