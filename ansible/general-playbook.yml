@@ -109,7 +109,7 @@
     server_name: core-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -121,7 +121,7 @@
     server_name: db-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -133,7 +133,7 @@
     server_name: dashboard-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-frontend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -145,7 +145,7 @@
     server_name: dashboard-api-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -157,7 +157,7 @@
     server_name: checkout-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -169,7 +169,7 @@
     server_name: office-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-frontend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -181,7 +181,7 @@
     server_name: office-api-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -193,7 +193,7 @@
     server_name: qc-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -205,7 +205,7 @@
     server_name: webhoook-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -217,7 +217,7 @@
     server_name: mobile-api-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -230,7 +230,7 @@
     server_name: external-api-external-prod-aws.glade.ng
     server_dir: /var/www/html/public
   vars_files:
-    - vars/apache-prod.yml
+    - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -325,6 +325,27 @@
   tasks:
     - name: Trigger Pipelines for staging
       command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=staging'"
+      with_items:
+        - 317 #core
+        - 316 #db
+        - 345 #webhoook
+        - 344 #checkout
+        - 322 #dashboard-api
+        - 320 #office
+        - 328 #office-api
+        - 306 #dashboard
+        - 315 #external-api
+        - 346 #pay-link
+
+- name: Trigger production Branch pipelines
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    gitlab_pat: 
+  tasks:
+    - name: Trigger Pipelines for staging
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=production'"
       with_items:
         - 317 #core
         - 316 #db
