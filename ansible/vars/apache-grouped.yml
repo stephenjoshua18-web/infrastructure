@@ -117,7 +117,7 @@ apache_vhosts_ssl:
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-f
             RewriteRule ^ index.html [QSA,L]
-     </Directory>
+      </Directory>
 
   - servername: 'dashboard-api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/dashboard-api/public'
