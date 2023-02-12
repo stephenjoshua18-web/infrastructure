@@ -50,6 +50,6 @@ resource "aws_security_group_rule" "allow_all_ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks       = ["86.92.65.85/32"]
+  cidr_blocks       = ["86.92.65.85/32", "134.209.28.21/32"]
   security_group_id = aws_security_group.sg_glade_production.id
 }
