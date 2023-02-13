@@ -7,6 +7,11 @@
     - name: set timezone to Africa/Lagos
       timezone:
         name: Africa/Lagos
+    - name: adding existing user "ubuntu" to group sudo
+      user:
+        name: "ubuntu"
+        groups: sudo
+        append: yes
     - name: "Create required directories in for webserver"
       file:
         path: "{{ item }}"
@@ -287,6 +292,7 @@
 
 - name: Trigger Testing Branch pipelines
   hosts: localhost
+  when: trigger_ci == 1
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
@@ -308,6 +314,7 @@
 
 - name: Trigger sandbox Branch pipelines
   hosts: localhost
+  when: trigger_ci == 1
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
@@ -329,6 +336,7 @@
 
 - name: Trigger staging Branch pipelines
   hosts: localhost
+  when: trigger_ci == 1
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
@@ -350,6 +358,7 @@
 
 - name: Trigger production Branch pipelines
   hosts: localhost
+  when: trigger_ci == 1
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"

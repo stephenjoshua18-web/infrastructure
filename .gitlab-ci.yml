@@ -50,7 +50,7 @@ deploy-ansible:
         - ansible all --list-hosts
         - ansible all -m ping --user ubuntu
         - ansible all -m setup --user ubuntu
-        - ansible-playbook general-playbook.yml --extra-vars "gitlab_pat=$GITLAB_PAT"
+        - ansible-playbook general-playbook.yml --extra-vars "gitlab_pat=$GITLAB_PAT trigger_ci=$TRIGGER_CI"
     when: manual
     only:
         - production
