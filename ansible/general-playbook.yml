@@ -280,6 +280,7 @@
 
 
 - name: Trigger Secrets Deployment
+  when: {{ trigger_ci }} == 1
   hosts: localhost
   vars:
     ansible_connection: local
@@ -289,10 +290,9 @@
     - name: Trigger Pipelines for Secrets
       command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ keys_manager_project }}/pipeline?ref=master'"
 
-
 - name: Trigger Testing Branch pipelines
   hosts: localhost
-  when: trigger_ci == 1
+  when: {{ trigger_ci }} == 1
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
@@ -314,7 +314,7 @@
 
 - name: Trigger sandbox Branch pipelines
   hosts: localhost
-  when: trigger_ci == 1
+  when: {{ trigger_ci }} == 1
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
@@ -336,7 +336,7 @@
 
 - name: Trigger staging Branch pipelines
   hosts: localhost
-  when: trigger_ci == 1
+  when: {{ trigger_ci }} == 1
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
@@ -358,7 +358,7 @@
 
 - name: Trigger production Branch pipelines
   hosts: localhost
-  when: trigger_ci == 1
+  when: {{ trigger_ci }} == 1
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
