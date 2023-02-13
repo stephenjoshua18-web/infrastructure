@@ -289,7 +289,7 @@
   tasks:
     - name: Trigger Pipelines for Secrets
       command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ keys_manager_project }}/pipeline?ref=master'"
-  when: trigger_ci  == "1"
+      when: trigger_ci  == "1"
 
 - name: Trigger Testing Branch pipelines
   hosts: localhost
@@ -311,7 +311,7 @@
         - 306 #dashboard
         - 315 #external-api
         - 346 #pay-link
-  when: trigger_ci  == "1"
+      when: trigger_ci  == "1"
 
 - name: Trigger sandbox Branch pipelines
   hosts: localhost
@@ -333,7 +333,7 @@
         - 306 #dashboard
         - 315 #external-api
         - 346 #pay-link
-  when: trigger_ci  == "1"
+      when: trigger_ci  == "1"
 
 - name: Trigger staging Branch pipelines
   hosts: localhost
@@ -355,7 +355,7 @@
         - 306 #dashboard
         - 315 #external-api
         - 346 #pay-link
-  when: trigger_ci  == "1"
+      when: trigger_ci  == "1"
 
 - name: Trigger production Branch pipelines
   hosts: localhost
@@ -377,7 +377,7 @@
         - 306 #dashboard
         - 315 #external-api
         - 346 #pay-link
-  when: trigger_ci  == "1"
+      when: trigger_ci  == "1"
 
 
 - name: grafana monitoring
