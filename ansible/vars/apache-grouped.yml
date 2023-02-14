@@ -14,6 +14,107 @@ apache_global_vhost_settings: |
   SetEnv HTTP_VERIF_HASH axXYN84lrqfRglG7o0203
   # Add other global settings on subsequent lines.
 
+apache_vhosts:
+  # Additional optional properties: 'serveradmin, serveralias, extra_parameters'.
+  - servername: 'core-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'db-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'webhook-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'checkout-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'qc-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'external-api-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'mobile-api-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'dashboard-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'dashboard-api-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'office-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'office-api-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+  - servername: 'pay-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/html'
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ReWriteEngine on
+      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+    
+
+
 apache_vhosts_ssl:
   - servername: 'core-{{glade_env}}.glade.ng'
     documentroot: '/var/www/core/public'
