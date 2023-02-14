@@ -35,19 +35,19 @@ resource "aws_default_subnet" "default_subnet" {
 }
 
 data "aws_ec2_instance_type" "glade_instance_sm" {
-  instance_type = "t2.small" # 1vcpu, 2gb mem
+  instance_type = "t4g.small" # 1vcpu, 2gb mem
 }
 
 data "aws_ec2_instance_type" "glade_instance_md" {
-  instance_type = "t2.medium" # 2vcpu, 4gb mem
+  instance_type = "t4g.medium" # 2vcpu, 4gb mem
 }
 
 data "aws_ec2_instance_type" "glade_instance_lg" {
-  instance_type = "t2.large" # 2vcpu, 8gb mem
+  instance_type = "t4g.large" # 2vcpu, 8gb mem
 }
 
 data "aws_ec2_instance_type" "glade_instance_xl" {
-  instance_type = "t2.xlarge" # 4vcpu, 16gb mem
+  instance_type = "t4g.xlarge" # 4vcpu, 16gb mem
 }
 
 data "aws_ami" "ubuntu" {
