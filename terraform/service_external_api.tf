@@ -8,6 +8,13 @@ resource "aws_instance" "external_api_service" {
     Name = "external_api_service"
   }
 
+  root_block_device {
+    volume_size           = "${var.volume_size}"
+    volume_type           = "gp2"
+    encrypted             = true
+    delete_on_termination = true
+  }
+
 }
 
 

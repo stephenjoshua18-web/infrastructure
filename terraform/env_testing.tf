@@ -4,6 +4,15 @@ resource "aws_instance" "testing" {
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
   vpc_security_group_ids = [ aws_security_group.sg_glade_production.id ]
+
+  # root disk
+  root_block_device {
+    volume_size           = "${var.volume_size}"
+    volume_type           = "gp2"
+    encrypted             = true
+    delete_on_termination = true
+  }
+  
   tags = {
     Name = "testing"
   }
