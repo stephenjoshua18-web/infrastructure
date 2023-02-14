@@ -62,6 +62,8 @@ infracost:
     # See https://www.infracost.io/docs/integrations/cicd/#docker-images for other options
     name: infracost/infracost:ci-0.10
     entrypoint: [""] # Override since we're running commands below
+  before_script:
+    - echo "Hello!";
   script:
     # If you use private modules, add an environment variable or secret
     # called GIT_SSH_KEY with your private key, so Infracost can access
