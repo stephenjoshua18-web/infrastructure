@@ -19,11 +19,14 @@ apache_vhosts:
   - servername: '{{server_name}}'
     documentroot: '{{server_dir}}'
     extra_parameters: |
-      ErrorLog ${APACHE_LOG_DIR}/error.log
-      CustomLog ${APACHE_LOG_DIR}/access.log combined
-      ReWriteEngine on
-      ReWriteCond %{HTTP:X-Forwarded-Proto} !https
-      ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      <Directory "/var/www/html">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
 
 apache_vhosts_ssl:
   - servername: '{{server_name}}'
