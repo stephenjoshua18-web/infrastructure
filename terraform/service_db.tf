@@ -1,6 +1,6 @@
 resource "aws_instance" "db_service_1" {
   ami           = data.aws_ami.ubuntu.id 
-  instance_type = data.aws_ec2_instance_type.glade_instance_sm.instance_type 
+  instance_type = data.aws_ec2_instance_type.glade_instance_md.instance_type 
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
   vpc_security_group_ids = [ aws_security_group.sg_glade_production.id ]
