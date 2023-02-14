@@ -44,6 +44,16 @@ resource "aws_security_group_rule" "allow_all_tls" {
   security_group_id = aws_security_group.sg_glade_production.id
 }
 
+resource "aws_security_group_rule" "allow_all_http" {
+  description       = "All External http"
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.sg_glade_production.id
+}
+
 resource "aws_security_group_rule" "allow_all_ssh" {
   description       = "All External SSH"
   type              = "ingress"
