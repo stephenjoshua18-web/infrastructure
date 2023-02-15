@@ -42,7 +42,7 @@ resource "aws_route53_record" "office_api_external_dns" {
   records = [aws_instance.office_service.public_ip]
 }
 
-resource "aws_route53_record" "office_api_external_dns" {
+resource "aws_route53_record" "public_office_api_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-api.glade.ng"
   type    = "A"
@@ -50,7 +50,7 @@ resource "aws_route53_record" "office_api_external_dns" {
   records = [aws_instance.office_service.public_ip]
 }
 
-resource "aws_route53_record" "office_api_external_dns" {
+resource "aws_route53_record" "public_office_v2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-v2.glade.ng"
   type    = "A"
@@ -58,7 +58,7 @@ resource "aws_route53_record" "office_api_external_dns" {
   records = [aws_instance.office_service.public_ip]
 }
 
-resource "aws_route53_record" "office_api_external_dns" {
+resource "aws_route53_record" "public_office_api_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office.glade.ng"
   type    = "A"
