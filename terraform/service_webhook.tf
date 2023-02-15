@@ -33,3 +33,11 @@ resource "aws_route53_record" "webhook_external_dns" {
   ttl     = 300
   records = [aws_instance.webhook_service.public_ip]
 }
+
+resource "aws_route53_record" "webhook_public_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhook.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}

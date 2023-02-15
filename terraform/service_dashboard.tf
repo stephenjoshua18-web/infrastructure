@@ -41,3 +41,27 @@ resource "aws_route53_record" "dashboard_api_external_dns" {
   ttl     = 300
   records = [aws_instance.dashboard_service.public_ip]
 }
+
+resource "aws_route53_record" "dashboard_public_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_v2_public_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-v2.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_api_public_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-api.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}

@@ -33,3 +33,19 @@ resource "aws_route53_record" "mobile_api_mobile_dns" {
   ttl     = 300
   records = [aws_instance.mobile_api_service.public_ip]
 }
+
+resource "aws_route53_record" "mobile_api_public_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "mobile-api.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.mobile_api_service.public_ip]
+}
+
+resource "aws_route53_record" "mobile_public_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "mobile.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.mobile_api_service.public_ip]
+}
