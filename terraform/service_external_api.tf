@@ -34,7 +34,7 @@ resource "aws_route53_record" "external_api_external_dns" {
   records = [aws_instance.external_api_service.public_ip]
 }
 
-resource "aws_route53_record" "external_api_external_dns" {
+resource "aws_route53_record" "external_public_api_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "api.glade.ng"
   type    = "A"
