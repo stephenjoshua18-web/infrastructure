@@ -19,7 +19,7 @@ apache_vhosts:
   - servername: '{{backend_server_name}}'
     documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -48,9 +48,6 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
-      RewriteEngine on
-      RewriteCond %{HTTP:X-Forwarded-Proto} !https
-      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
   - servername: '{{frontend_server_name}}'
     documentroot: '/var/www/web'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
@@ -79,10 +76,5 @@ apache_mods_enabled:
   - rewrite
   - ssl
 apache_mods_disabled: []
-
-
-
-apache_vhosts:
-  # Additional optional properties: 'serveradmin, serveralias, extra_parameters'.
   
 
