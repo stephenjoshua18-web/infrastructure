@@ -43,6 +43,7 @@
         key: '{{ item }}'
       with_file:
         - public_keys/abuango
+    
 - name: Set Glade Log Permissions
   hosts: all
   remote_user: ubuntu
@@ -227,6 +228,27 @@
     - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
+
+- name: Remove old apache configs
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Remove file (delete file)
+      ansible.builtin.file:
+        path: {{item}}
+        state: absent
+      with_items:
+        - /etc/apache2/sites-available/000-default.conf
+        - /etc/apache2/sites-available/default-ssl.conf
+
+- name: Trigger Apache Restart
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Restart Apache
+      command: "systemctl restart apache2"
 
 - name: Purge PHP
   hosts: php-servers
