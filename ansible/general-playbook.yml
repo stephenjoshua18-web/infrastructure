@@ -251,7 +251,7 @@
     - { role: geerlingguy.apache }
 
 - name: Purge PHP
-  hosts: production
+  hosts: php-servers
   remote_user: ubuntu
   become: true
   tasks:
@@ -259,7 +259,7 @@
       command: "apt purge php* -y"
 
 - name: Setup PHP Server
-  hosts: production
+  hosts: php-servers
   remote_user: ubuntu
   become: true
   vars_files:
