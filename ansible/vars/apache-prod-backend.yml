@@ -19,7 +19,7 @@ apache_vhosts:
   - servername: '{{server_name}}'
     documentroot: '{{server_dir}}'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted

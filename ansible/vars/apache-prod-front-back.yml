@@ -16,8 +16,19 @@ apache_global_vhost_settings: |
 
 apache_vhosts:
   # Additional optional properties: 'serveradmin, serveralias, extra_parameters'.
-  - servername: '{{server_name}}'
-    documentroot: '{{server_dir}}'
+  - servername: '{{backend_server_name}}'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: '{{frontend_server_name}}'
+    documentroot: '/var/www/html/web'
     extra_parameters: |
       <Directory "/var/www/html">
         AllowOverride All
@@ -29,17 +40,22 @@ apache_vhosts:
       </Directory>
 
 apache_vhosts_ssl:
-  - servername: '{{server_name}}'
-    documentroot: '{{server_dir}}'
+  - servername: '{{backend_server_name}}'
+    documentroot: '/var/www/html/public'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
-      RewriteEngine on
-      RewriteCond %{HTTP:X-Forwarded-Proto} !https
-      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  - servername: '{{frontend_server_name}}'
+    documentroot: '/var/www/web'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
       <Directory /var/www/web/>
             Options FollowSymLinks
             AllowOverride All
@@ -60,4 +76,5 @@ apache_mods_enabled:
   - rewrite
   - ssl
 apache_mods_disabled: []
+  
 

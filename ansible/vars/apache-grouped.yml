@@ -17,9 +17,9 @@ apache_global_vhost_settings: |
 apache_vhosts:
   # Additional optional properties: 'serveradmin, serveralias, extra_parameters'.
   - servername: 'core-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -28,9 +28,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'db-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -39,9 +39,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'webhook-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -50,9 +50,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'checkout-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -61,9 +61,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'qc-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -72,9 +72,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'external-api-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -83,9 +83,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'mobile-api-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -94,9 +94,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'dashboard-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/web'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/web">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -105,9 +105,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'dashboard-api-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -116,9 +116,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'office-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/web'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/web">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -127,9 +127,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'office-api-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/html/public'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -138,9 +138,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: 'pay-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/html'
+    documentroot: '/var/www/web'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/web">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
