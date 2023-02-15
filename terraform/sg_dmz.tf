@@ -15,7 +15,7 @@ resource "aws_security_group" "sg_glade_dmz" {
   }
 }
 
-resource "aws_security_group_rule" "internal_ingress_rule" {
+resource "aws_security_group_rule" "dmz_internal_ingress_rule" {
   description       = "All Internal Traffice within VPC"
   type              = "ingress"
   to_port           = 0
@@ -25,7 +25,7 @@ resource "aws_security_group_rule" "internal_ingress_rule" {
   security_group_id = aws_security_group.sg_glade_dmz.id
 }
 
-resource "aws_security_group_rule" "allow_all_egress" {
+resource "aws_security_group_rule" "dmz_allow_all_egress" {
   type              = "egress"
   to_port           = 0
   protocol          = "-1"

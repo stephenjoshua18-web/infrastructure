@@ -15,7 +15,7 @@ resource "aws_security_group" "sg_glade_production" {
   }
 }
 
-resource "aws_security_group_rule" "internal_ingress_rule" {
+resource "aws_security_group_rule" "prod_internal_ingress_rule" {
   description       = "All Internal Traffice within VPC"
   type              = "ingress"
   from_port         = 0
@@ -25,7 +25,7 @@ resource "aws_security_group_rule" "internal_ingress_rule" {
   security_group_id = aws_security_group.sg_glade_production.id
 }
 
-resource "aws_security_group_rule" "allow_all_egress" {
+resource "aws_security_group_rule" "prod_allow_all_egress" {
   type              = "egress"
   to_port           = 0
   protocol          = "-1"
@@ -34,7 +34,7 @@ resource "aws_security_group_rule" "allow_all_egress" {
   security_group_id = aws_security_group.sg_glade_production.id
 }
 
-resource "aws_security_group_rule" "allow_all_tls" {
+resource "aws_security_group_rule" "prod_allow_all_tls" {
   description       = "All External TLS"
   type              = "ingress"
   from_port         = 443
@@ -44,7 +44,7 @@ resource "aws_security_group_rule" "allow_all_tls" {
   security_group_id = aws_security_group.sg_glade_production.id
 }
 
-resource "aws_security_group_rule" "allow_all_http" {
+resource "aws_security_group_rule" "prod_allow_all_http" {
   description       = "All External http"
   type              = "ingress"
   from_port         = 80
@@ -54,7 +54,7 @@ resource "aws_security_group_rule" "allow_all_http" {
   security_group_id = aws_security_group.sg_glade_production.id
 }
 
-resource "aws_security_group_rule" "allow_all_ssh" {
+resource "aws_security_group_rule" "prod_allow_all_ssh" {
   description       = "All External SSH"
   type              = "ingress"
   from_port         = 22
