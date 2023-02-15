@@ -146,22 +146,10 @@
   remote_user: ubuntu
   become: true
   vars:
-    server_name: dashboard-external-prod-aws.glade.ng
-    server_dir: /var/www/html/public
+    frontend_server_name: dashboard.glade.ng
+    backend_server_name: dashboard-api.glade.ng
   vars_files:
-    - vars/apache-prod-frontend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on dashboard api Servers
-  hosts: dashboard
-  remote_user: ubuntu
-  become: true
-  vars:
-    server_name: dashboard-api-external-prod-aws.glade.ng
-    server_dir: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
+    - vars/apache-prod-front-back.yml
   roles:
     - { role: geerlingguy.apache }
 
@@ -182,24 +170,14 @@
   remote_user: ubuntu
   become: true
   vars:
-    server_name: office-external-prod-aws.glade.ng
-    server_dir: /var/www/html/public
+    frontend_server_name: office.glade.ng
+    backend_server_name: office-api.glade.ng
   vars_files:
-    - vars/apache-prod-frontend.yml
+    - vars/apache-prod-front-back.yml
   roles:
     - { role: geerlingguy.apache }
 
-- name: Setup Apache on office api Servers
-  hosts: office
-  remote_user: ubuntu
-  become: true
-  vars:
-    server_name: office-api-external-prod-aws.glade.ng
-    server_dir: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
+
 
 - name: Setup Apache on qc Servers
   hosts: qc
