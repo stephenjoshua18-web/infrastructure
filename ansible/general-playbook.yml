@@ -111,10 +111,10 @@
   remote_user: ubuntu
   become: true
   vars:
-    server_name: pay-external-prod-aws.glade.ng
-    server_dir: /var/www/html/
+    frontend_server_name: pay.glade.ng
+    backend_server_name: pay-api.glade.ng
   vars_files:
-    - vars/apache-prod-frontend.yml
+    - vars/apache-prod-front-back.yml
   roles:
     - { role: geerlingguy.apache }
 
