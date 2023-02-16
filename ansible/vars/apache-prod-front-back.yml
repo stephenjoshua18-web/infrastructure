@@ -50,9 +50,9 @@ apache_vhosts:
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
   - servername: '{{frontend_server_name}}'
-    documentroot: '/var/www/html/web'
+    documentroot: '/var/www/web'
     extra_parameters: |
-      <Directory "/var/www/html">
+      <Directory "/var/www/web">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted

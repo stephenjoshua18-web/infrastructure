@@ -178,8 +178,6 @@
   roles:
     - { role: geerlingguy.apache }
 
-
-
 - name: Setup Apache on qc Servers
   hosts: qc
   remote_user: ubuntu
