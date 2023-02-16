@@ -41,6 +41,7 @@ apache_vhosts:
   - servername: '{{server_name}}'
     documentroot: '{{server_dir}}'
     extra_parameters: |
+      ServerAlias *.glade.ng
       <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
@@ -57,6 +58,7 @@ apache_vhosts_ssl:
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
+      ServerAlias *.glade.ng
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
       RewriteEngine on

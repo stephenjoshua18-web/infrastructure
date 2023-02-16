@@ -41,6 +41,7 @@ apache_vhosts:
   - servername: '{{backend_server_name}}'
     documentroot: '/var/www/html/public'
     extra_parameters: |
+      ServerAlias *.glade.ng
       <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
@@ -52,6 +53,7 @@ apache_vhosts:
   - servername: '{{frontend_server_name}}'
     documentroot: '/var/www/web'
     extra_parameters: |
+      ServerAlias *.glade.ng
       <Directory "/var/www/web">
         AllowOverride All
         Options -Indexes +FollowSymLinks
@@ -78,6 +80,7 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ServerAlias *.glade.ng
       <Directory /var/www/web/>
             Options FollowSymLinks
             AllowOverride All
