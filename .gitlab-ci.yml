@@ -16,7 +16,7 @@ before_script:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     
 
-review:
+review-terraform:
     stage: review
     script:
         - cd terraform
@@ -25,7 +25,15 @@ review:
         - terraform validate
         - terraform plan
 
-
+review-ansible:
+    stage: review
+    script:
+        - cd ansible
+        - ansible-galaxy collection install ansible.posix
+        - ansible all --list-hosts
+        - ansible all -m ping --user ubuntu
+        - ansible all -m setup --user ubuntu
+        - ansible-playbook general-playbook.yml --check --extra-vars "gitlab_pat=$GITLAB_PAT trigger_ci=0"
       
 deploy-terraform:
     stage: deploy-terraform
