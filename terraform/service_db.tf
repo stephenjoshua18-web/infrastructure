@@ -42,7 +42,7 @@ resource "aws_route53_record" "db-service-public-external-dns" {
   records = [aws_instance.db_service.public_ip]
 }
 
-resource "aws_route53_record" "db-service-public-external-dns" {
+resource "aws_route53_record" "db-prod-public-external-dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "db-prod.glade.ng"
   type    = "A"
