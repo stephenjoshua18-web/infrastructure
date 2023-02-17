@@ -73,6 +73,3 @@ resource "aws_route53_zone" "gladeng_zone" {
   name = "glade.ng"
 }
 
-resource "aws_security_group" "ec2-rds-1" {
-
-}
