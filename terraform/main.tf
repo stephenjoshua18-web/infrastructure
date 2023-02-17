@@ -25,7 +25,7 @@ resource "aws_key_pair" "deployer" {
 }
 
 resource "aws_eip" "db_service_eip" {
-
+  instance = aws_instance.db_service.id
 }
 
 resource "aws_default_vpc" "gladepay-net" {
@@ -71,4 +71,8 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_route53_zone" "gladeng_zone" {
   name = "glade.ng"
+}
+
+resource "aws_security_group" "ec2-rds-1" {
+
 }

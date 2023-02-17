@@ -17,9 +17,7 @@ resource "aws_instance" "db_service" {
 
 }
 
-resource "aws_eip" "db_service_eip" {
-  instance = aws_instance.web.id
-}
+
 
 resource "aws_route53_record" "db_internal_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
