@@ -20,7 +20,7 @@ resource "aws_instance" "db_service" {
 
 resource "aws_route53_record" "db_internal_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "1-db-internal-prod-aws.glade.ng"
+  name    = "db-internal-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.db_service.private_ip]
