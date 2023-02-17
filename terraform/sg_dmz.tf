@@ -34,4 +34,13 @@ resource "aws_security_group_rule" "dmz_allow_all_egress" {
   security_group_id = aws_security_group.sg_glade_dmz.id
 }
 
+resource "aws_security_group_rule" "dmz_allow_all_egress_from_internal" {
+  type              = "egress"
+  to_port           = 0
+  protocol          = "-1"
+  from_port         = 0
+  source_security_group_id = aws_security_group.sg_glade_dmz.id
+  security_group_id = aws_security_group.sg_glade_dmz.id
+}
+
 
