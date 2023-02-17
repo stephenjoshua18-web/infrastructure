@@ -24,6 +24,9 @@ resource "aws_key_pair" "deployer" {
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKAN6ZhSsBACbsEQDShd5WHfBWj1NTyPoXBeYrAe4oiRdSEYYx4u6SFA08e5N4Rdgkl4wtTQOH/+uLgMFU4UB4JPjcp9XFjuTrocZDLaTBJPcQQSZXX6LabMuILnx6qQb7ujK389BzyuZBYNvyBnq6FDRzoLN9AEugfRMLH2a0fv3c0N/AuhvUPHWGBZFgT/2+ucCZ1OBllZtYgVHg1kvtJ+FQ/RsasBDVfnolOxjju+LwjQ3ikda5pLCaaTWVj5z44FLzI9mstHlubSA0LmylJZlZ27K69qOJ1eFgN8rGusNzySgb06XfM9lOdAE7OahkOHu0cexVblMqsz0xQ1kGNU7WemnvYApAse6n/4htJM++HmbTQYqp/kKiUfDxs4C4qunEyqFxGg4gDWS+Qeuo7Cr/mfmL5N4SQIhXOzMTWitEAsyDPxvYazHtM0i1aRWVtKOKXjl7lTjvdC+In4UE8woocW1/9bUuFRSj05NMnPyWc0BMXDmRcI7pTrgvIdk="
 }
 
+resource "aws_eip" "db_service_eip" {
+
+}
 
 resource "aws_default_vpc" "gladepay-net" {
   

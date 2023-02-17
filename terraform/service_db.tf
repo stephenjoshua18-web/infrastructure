@@ -17,6 +17,9 @@ resource "aws_instance" "db_service" {
 
 }
 
+resource "aws_eip" "db_service_eip" {
+  instance = aws_instance.web.id
+}
 
 resource "aws_route53_record" "db_internal_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
@@ -31,7 +34,7 @@ resource "aws_route53_record" "db-service-external-dns" {
   name    = "db-external-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.db_service.public_ip]
+  records = [aws_eip.db_service_eip.public_ip]
 }
 
 resource "aws_route53_record" "db-service-public-external-dns" {
@@ -39,7 +42,7 @@ resource "aws_route53_record" "db-service-public-external-dns" {
   name    = "db-service.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.db_service.public_ip]
+  records = [aws_eip.db_service_eip.public_ip]
 }
 
 resource "aws_route53_record" "db-prod-public-external-dns" {
@@ -47,5 +50,5 @@ resource "aws_route53_record" "db-prod-public-external-dns" {
   name    = "db-prod.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.db_service.public_ip]
+  records = [aws_eip.db_service_eip.public_ip]
 }
