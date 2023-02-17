@@ -72,4 +72,3 @@ data "aws_ami" "ubuntu" {
 resource "aws_route53_zone" "gladeng_zone" {
   name = "glade.ng"
 }
-

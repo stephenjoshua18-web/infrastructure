@@ -10,7 +10,7 @@ resource "aws_security_group" "sg_glade_production" {
   description = "Default Rules for all Glade Services"
   vpc_id      = "vpc-0bcbfe2d07829a61f"
 
-  tags = {
+    tags = {
     Name = "sg_glade_production"
   }
 }
