@@ -43,7 +43,7 @@ deploy-terraform:
         - terraform init
         - terraform apply -auto-approve
     rules:
-      - if: $DEPLOY_PRODUCTION == "1" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      - if: $DEPLOY_PRODUCTION_TERRAFORM == "1" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
         when: manual
 
 
@@ -57,7 +57,7 @@ deploy-ansible:
         - ansible all -m setup --user ubuntu
         - ansible-playbook general-playbook.yml --extra-vars "gitlab_pat=$GITLAB_PAT trigger_ci_keys=$TRIGGER_CI_KEYS trigger_ci_experiment=$TRIGGER_CI_EXPERIMENT trigger_ci_production=$TRIGGER_CI_PRODUCTION trigger_ci_testing=$TRIGGER_CI_TESTING trigger_ci_staging=$TRIGGER_CI_STAGING trigger_ci_sandbox=$TRIGGER_CI_SANDBOX"
     rules:
-      - if: $DEPLOY_PRODUCTION == "1" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      - if: $DEPLOY_PRODUCTION_ANSIBLE == "1" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
         when: manual
 
 
