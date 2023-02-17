@@ -35,7 +35,7 @@ resource "aws_security_group_rule" "dmz_allow_all_egress" {
 }
 
 resource "aws_security_group_rule" "dmz_allow_all_egress_from_internal" {
-  type              = "egress"
+  type              = "ingress"
   to_port           = 0
   protocol          = "-1"
   from_port         = 0
