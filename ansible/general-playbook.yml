@@ -51,16 +51,7 @@
   tasks:
     - name: Set Glade Log Permissions
       command: "chmod -R 777 /opt/glade/logs"
-- name: Setup Apache on sandbox Servers
-  hosts: sandbox_servers
-  remote_user: ubuntu
-  become: true
-  vars:
-    glade_env: sandbox
-  vars_files:
-    - vars/apache-grouped.yml
-  roles:
-    - { role: geerlingguy.apache }
+
 
 - name: Setup Apache on testing Servers
   hosts: test_servers
@@ -73,16 +64,6 @@
   roles:
     - { role: geerlingguy.apache }
 
-- name: Setup Apache on canary Servers
-  hosts: canary_servers
-  remote_user: ubuntu
-  become: true
-  vars:
-    glade_env: canary
-  vars_files:
-    - vars/apache-grouped.yml
-  roles:
-    - { role: geerlingguy.apache }
 
 - name: Setup Apache on staging Servers
   hosts: staging_servers
@@ -315,27 +296,6 @@
         - 346 #pay-link
       when: trigger_ci_testing  == "1"
 
-- name: Trigger sandbox Branch pipelines
-  hosts: localhost
-  vars:
-    ansible_connection: local
-    ansible_python_interpreter: "{{ ansible_playbook_python }}"
-    gitlab_pat: 
-  tasks:
-    - name: Trigger Pipelines for sandbox
-      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=sandbox'"
-      with_items:
-        - 317 #core
-        - 316 #db
-        - 345 #webhoook
-        - 344 #checkout
-        - 322 #dashboard-api
-        - 320 #office
-        - 328 #office-api
-        - 306 #dashboard
-        - 315 #external-api
-        - 346 #pay-link
-      when: trigger_ci_sandbox  == "1"
 
 - name: Trigger staging Branch pipelines
   hosts: localhost
