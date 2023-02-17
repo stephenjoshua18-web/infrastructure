@@ -13,28 +13,6 @@ apache_global_vhost_settings: |
   SetEnv HTTP_GLADE_ENV {{glade_env}}
   SetEnv HTTP_VERIF_HASH axXYN84lrqfRglG7o0203
   # Add other global settings on subsequent lines.
-  <VirtualHost *:80>
-    ServerName default
-    #This part here, is crucial.
-    <Location />
-        Require all denied
-    </Location>
-  </VirtualHost>
-  <VirtualHost *:443>
-      ServerName default
-      #This part here, is crucial.
-      <Location />
-          Require all denied
-      </Location>
-      SSLEngine on
-      SSLCipherSuite AES256+EECDH:AES256+EDH
-      SSLProtocol All -SSLv2 -SSLv3
-      SSLHonorCipherOrder On
-      SSLCompression off
-      SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
-      SSLCertificateKeyFile /opt/glade/ssl/gladeng.key-file
-      SSLCertificateChainFile /opt/glade/ssl/gladeng.bundle-file
-  </VirtualHost>
 
 apache_vhosts:
   # Additional optional properties: 'serveradmin, serveralias, extra_parameters'.
