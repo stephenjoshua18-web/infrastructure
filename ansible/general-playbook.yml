@@ -260,14 +260,6 @@
     - name: Restart Apache
       command: "systemctl restart apache2"
 
-- name: Purge PHP
-  hosts: php-servers
-  remote_user: ubuntu
-  become: true
-  tasks:
-    - name: Restart Apache
-      command: "apt purge php* -y"
-
 - name: Setup PHP Server
   hosts: php-servers
   remote_user: ubuntu
