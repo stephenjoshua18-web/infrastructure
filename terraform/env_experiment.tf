@@ -130,3 +130,10 @@ resource "aws_route53_record" "pay_experiment_dns" {
   records = [aws_instance.experiment.public_ip]
 }
 
+resource "aws_route53_record" "website_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "website-experiment.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
