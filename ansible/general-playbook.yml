@@ -294,6 +294,7 @@
         - 306 #dashboard
         - 315 #external-api
         - 346 #pay-link
+        - 348 #website
       when: trigger_ci_testing  == "1"
 
 
@@ -317,6 +318,7 @@
         - 306 #dashboard
         - 315 #external-api
         - 346 #pay-link
+        - 348 #website
       when: trigger_ci_staging  == "1"
 
 - name: Trigger production Branch pipelines
@@ -339,6 +341,7 @@
         - 306 #dashboard
         - 315 #external-api
         - 346 #pay-link
+        - 348 #website
       when: trigger_ci_production  == "1"
 
 

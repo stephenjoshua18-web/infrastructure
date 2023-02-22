@@ -171,6 +171,17 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
+  - servername: 'website-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/website'
+    extra_parameters: |
+      <Directory "/var/www/website">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
     
 
 
@@ -320,6 +331,13 @@ apache_vhosts_ssl:
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteRule ^ index.html [QSA,L]
       </Directory>
+  - servername: 'website-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/website'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
 
 apache_allow_override: "All"
 apache_options: "-Indexes +FollowSymLinks"
