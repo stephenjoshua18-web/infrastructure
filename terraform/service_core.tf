@@ -32,7 +32,7 @@ resource "aws_route53_record" "core_external_dns" {
   name    = "core-external-prod-aws.glade.ng"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.core_service.public_ip]
+  records = [aws_eip.core_service_eip.public_ip]
 }
 
 
