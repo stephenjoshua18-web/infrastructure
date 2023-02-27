@@ -29,7 +29,7 @@ resource "aws_eip" "db_service_eip" {
 }
 
 resource "aws_eip" "core_service_eip" {
-  
+  instance = aws_instance.core_service.id
 }
 
 resource "aws_default_vpc" "gladepay-net" {
