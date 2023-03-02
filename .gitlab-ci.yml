@@ -30,7 +30,6 @@ review-ansible:
     script:
         - cd ansible
         - ansible-galaxy collection install ansible.posix
-        - ansible-galaxy install robertdebock.logrotate
         - ansible all --list-hosts
         - ansible all -m ping --user ubuntu
         - ansible all -m setup --user ubuntu
@@ -53,7 +52,6 @@ deploy-ansible:
     script:
         - cd ansible
         - ansible-galaxy collection install ansible.posix
-        - ansible-galaxy install robertdebock.logrotate
         - ansible all --list-hosts
         - ansible all -m ping --user ubuntu
         - ansible all -m setup --user ubuntu
