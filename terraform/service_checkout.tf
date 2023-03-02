@@ -42,7 +42,7 @@ resource "aws_route53_record" "checkout_prod_external_dns" {
   records = [aws_instance.checkout_service.public_ip]
 }
 
-resource "aws_route53_record" "checkout_external_dns" {
+resource "aws_route53_record" "checkout_main_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "checkout.glade.ng"
   type    = "A"
