@@ -33,3 +33,27 @@ resource "aws_route53_record" "checkout_external_dns" {
   ttl     = 300
   records = [aws_instance.checkout_service.public_ip]
 }
+
+resource "aws_route53_record" "checkout_prod_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "checkout-prod.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.checkout_service.public_ip]
+}
+
+resource "aws_route53_record" "checkout_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "checkout.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.checkout_service.public_ip]
+}
+
+resource "aws_route53_record" "checkout_v2_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "checkout-v2.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.checkout_service.public_ip]
+}
