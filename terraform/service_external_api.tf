@@ -41,3 +41,11 @@ resource "aws_route53_record" "api_external_dns" {
   ttl     = 300
   records = [aws_instance.external_api_service.public_ip]
 }
+
+resource "aws_route53_record" "api_prod_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "api-prod.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.external_api_service.public_ip]
+}
