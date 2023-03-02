@@ -462,3 +462,17 @@
         name: promtail
         state: restarted
         enabled: true
+
+- name: Setup logrotate
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  vars:
+    logrotate_frequency: daily
+    logrotate_keep: 7
+    logrotate_compress: yes
+    logrotate_entries:
+      - name: glade-logs
+        path: "/opt/glade/logs/*"
+  roles:
+    - role: robertdebock.logrotate
