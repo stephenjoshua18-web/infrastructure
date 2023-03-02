@@ -34,3 +34,18 @@ resource "aws_route53_record" "webhook_external_dns" {
   records = [aws_instance.webhook_service.public_ip]
 }
 
+resource "aws_route53_record" "webhook_prod_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhook-service-prod.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}
+
+resource "aws_route53_record" "webhooks_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhooks.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}

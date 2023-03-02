@@ -35,4 +35,20 @@ resource "aws_route53_record" "core_external_dns" {
   records = [aws_eip.core_service_eip.public_ip]
 }
 
+resource "aws_route53_record" "core_prod_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "core-prod.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_eip.core_service_eip.public_ip]
+}
+
+resource "aws_route53_record" "core_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "core.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_eip.core_service_eip.public_ip]
+}
+
 
