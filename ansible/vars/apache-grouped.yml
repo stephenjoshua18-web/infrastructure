@@ -321,8 +321,6 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
-      RewriteCond %{HTTP:X-Forwarded-Proto} !https
-      RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
       <Directory "/var/www/pay">
         AllowOverride All
         Options -Indexes +FollowSymLinks
