@@ -64,6 +64,17 @@
   roles:
     - { role: geerlingguy.apache }
 
+- name: Setup Apache on sandbox Servers
+  hosts: sandbox_servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: sandbox
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
+
 
 - name: Setup Apache on staging Servers
   hosts: staging_servers
