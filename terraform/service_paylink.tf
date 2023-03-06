@@ -4,6 +4,7 @@ resource "aws_instance" "pay_service" {
   key_name      = aws_key_pair.deployer.key_name
   subnet_id     = aws_default_subnet.default_subnet.id
   vpc_security_group_ids = [ aws_security_group.sg_glade_production.id ]
+  iam_instance_profile = "${var.instance_profile_arn}"
   tags = {
     Name = "pay_service"
   }
