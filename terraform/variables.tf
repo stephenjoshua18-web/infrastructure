@@ -7,5 +7,5 @@ variable "volume_size" {
 }
 
 variable "instance_profile_arn"{
-  default = "arn:aws:iam::016246313804:instance-profile/secrets_manager_readonly"
+  default = "secrets_manager_readonly"
 }
