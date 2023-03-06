@@ -117,7 +117,7 @@ resource "aws_route53_record" "qc_sandbox_dns" {
 
 resource "aws_route53_record" "external_api_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "external-api-sandbox.glade.ng"
+  name    = "api-sandbox.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.sandbox.public_ip]
