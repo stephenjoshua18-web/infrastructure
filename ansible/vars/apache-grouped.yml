@@ -94,7 +94,7 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
-  - servername: 'external-api-{{glade_env}}.glade.ng'
+  - servername: 'api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/html/public'
     extra_parameters: |
       <Directory "/var/www/html/public">
