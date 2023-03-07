@@ -230,7 +230,7 @@ apache_vhosts_ssl:
 
 
   - servername: 'api-{{glade_env}}.glade.ng'
-    documentroot: '/var/www/external-api/public'
+    documentroot: '/var/www/api/public'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
