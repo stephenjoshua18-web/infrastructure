@@ -229,7 +229,7 @@ apache_vhosts_ssl:
       RewriteEngine on
 
 
-  - servername: 'external-api-{{glade_env}}.glade.ng'
+  - servername: 'api-{{glade_env}}.glade.ng'
     documentroot: '/var/www/external-api/public'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
