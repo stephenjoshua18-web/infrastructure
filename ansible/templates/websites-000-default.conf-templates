@@ -12,19 +12,6 @@
 
 </VirtualHost>
 <VirtualHost *:80>
-    DocumentRoot "/var/www/html"
-    ServerName gladepay.com
-    ServerAlias www.gladepay.com
-    Redirect permanent / https://glade.ng 
-         <Directory /var/www/html/>
-            Options FollowSymLinks
-            Options -Indexes
-            AllowOverride All
-            Require all granted
-        </Directory>
-
-</VirtualHost>
-<VirtualHost *:80>
     DocumentRoot "/var/www/blog-backend"
     ServerName blog-backend.glade.ng
         Redirect permanent / https://blog-backend.glade.ng
@@ -85,39 +72,15 @@
 </VirtualHost>
 
 
-
-<VirtualHost *:443>
-    ServerAdmin webmaster@gladepay.com
-    DocumentRoot /var/www/html
-    ServerName gladepay.com
-    ServerAlias www.gladepay.com
-    <Directory /var/www/html/>
-            Options FollowSymLinks
-            Options -Indexes
-            AllowOverride All
-            Require all granted
-        </Directory>
-
-    SSLEngine on
-    SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
-    SSLCertificateKeyFile /opt/glade/ssl/gladeng.key-file
-    SSLCertificateChainFile /opt/glade/ssl/gladeng.bundle-file
-    SSLProtocol all -SSLv2 -SSLv3 -TLSv1
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
 <VirtualHost *:443>
     ServerAdmin webmaster@glade.ng
     DocumentRoot /var/www/html
     ServerName glade.ng
     ServerAlias www.glade.ng
-    <Directory /var/www/html/>
-            Options FollowSymLinks
-            Options -Indexes
-            AllowOverride All
-            Require all granted
-    </Directory>
+
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:3032/
+    ProxyPassReverse / http://localhost:3032/
 
     SSLEngine on
     SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
@@ -152,12 +115,10 @@
     ServerAdmin webmaster@gladepay.com
     DocumentRoot /var/www/blog
     ServerName blog.glade.ng
-    <Directory /var/www/blog/>
-            Options FollowSymLinks
-            Options -Indexes
-            AllowOverride All
-            Require all granted
-        </Directory>
+
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:3033/
+    ProxyPassReverse / http://localhost:3033/
 
     SSLEngine on
     SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
