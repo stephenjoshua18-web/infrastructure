@@ -252,12 +252,12 @@
   tasks:
     - name: Compy config file
       ansible.builtin.copy:
-      src: templates/websites-000-default.conf-templates
-      dest: /etc/apache2/sites-available/000-default.conf
-      owner: root
-      group: root
-      mode: '0644'
-      backup: yes
+        src: templates/websites-000-default.conf-templates
+        dest: /etc/apache2/sites-available/000-default.conf
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
 
 - name: Trigger Apache Restart
   hosts: all
