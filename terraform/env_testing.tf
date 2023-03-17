@@ -69,6 +69,14 @@ resource "aws_route53_record" "dashboard_api_testing_dns" {
   records = [aws_instance.testing.public_ip]
 }
 
+resource "aws_route53_record" "dashboard_api_v2_testing_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-api-v2-testing.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.testing.public_ip]
+}
+
 resource "aws_route53_record" "dashboard_testing_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "dashboard-testing.glade.ng"
