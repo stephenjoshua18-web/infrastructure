@@ -53,7 +53,7 @@ resource "aws_route53_record" "api_prod_external_dns" {
 
 
 
-resource "aws_route53_record" "external_api_internal_dns" {
+resource "aws_route53_record" "external_api_2_internal_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "external-api-internal-prod-aws.gladefinance.co"
   type    = "A"
@@ -61,7 +61,7 @@ resource "aws_route53_record" "external_api_internal_dns" {
   records = [aws_instance.external_api_service.private_ip]
 }
 
-resource "aws_route53_record" "external_api_external_dns" {
+resource "aws_route53_record" "external_api_2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "external-api-external-prod-aws.gladefinance.co"
   type    = "A"
@@ -69,7 +69,7 @@ resource "aws_route53_record" "external_api_external_dns" {
   records = [aws_instance.external_api_service.public_ip]
 }
 
-resource "aws_route53_record" "api_external_dns" {
+resource "aws_route53_record" "api_2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "api.gladefinance.co"
   type    = "A"
@@ -77,7 +77,7 @@ resource "aws_route53_record" "api_external_dns" {
   records = [aws_instance.external_api_service.public_ip]
 }
 
-resource "aws_route53_record" "api_prod_external_dns" {
+resource "aws_route53_record" "api_2_prod_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "api-prod.gladefinance.co"
   type    = "A"

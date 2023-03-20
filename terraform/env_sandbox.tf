@@ -132,7 +132,7 @@ resource "aws_route53_record" "pay_sandbox_dns" {
 }
 
 
-resource "aws_route53_record" "sandbox_internal_dns" {
+resource "aws_route53_record" "sandbox_2_internal_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "sandbox-internal-aws.gladefinance.co"
   type    = "A"
@@ -140,7 +140,7 @@ resource "aws_route53_record" "sandbox_internal_dns" {
   records = [aws_instance.sandbox.private_ip]
 }
 
-resource "aws_route53_record" "sandbox_external_dns" {
+resource "aws_route53_record" "sandbox_2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "sandbox-external-aws.gladefinance.co"
   type    = "A"
@@ -148,7 +148,7 @@ resource "aws_route53_record" "sandbox_external_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "core_sandbox_dns" {
+resource "aws_route53_record" "core_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "core-sandbox.gladefinance.co"
   type    = "A"
@@ -156,7 +156,7 @@ resource "aws_route53_record" "core_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "db_sandbox_dns" {
+resource "aws_route53_record" "db_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "db-sandbox.gladefinance.co"
   type    = "A"
@@ -164,7 +164,7 @@ resource "aws_route53_record" "db_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "webhook_sandbox_dns" {
+resource "aws_route53_record" "webhook_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "webhook-sandbox.gladefinance.co"
   type    = "A"
@@ -172,7 +172,7 @@ resource "aws_route53_record" "webhook_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "dashboard_api_sandbox_dns" {
+resource "aws_route53_record" "dashboard_api_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "dashboard-api-sandbox.gladefinance.co"
   type    = "A"
@@ -180,7 +180,7 @@ resource "aws_route53_record" "dashboard_api_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "dashboard_sandbox_dns" {
+resource "aws_route53_record" "dashboard_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "dashboard-sandbox.gladefinance.co"
   type    = "A"
@@ -188,7 +188,7 @@ resource "aws_route53_record" "dashboard_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "office_sandbox_dns" {
+resource "aws_route53_record" "office_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-sandbox.gladefinance.co"
   type    = "A"
@@ -196,7 +196,7 @@ resource "aws_route53_record" "office_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "office_api_sandbox_dns" {
+resource "aws_route53_record" "office_api_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-api-sandbox.gladefinance.co"
   type    = "A"
@@ -204,7 +204,7 @@ resource "aws_route53_record" "office_api_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "checkout_sandbox_dns" {
+resource "aws_route53_record" "checkout_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "checkout-sandbox.gladefinance.co"
   type    = "A"
@@ -212,7 +212,7 @@ resource "aws_route53_record" "checkout_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "mobile_api_sandbox_dns" {
+resource "aws_route53_record" "mobile_api_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "mobile-api-sandbox.gladefinance.co"
   type    = "A"
@@ -220,7 +220,7 @@ resource "aws_route53_record" "mobile_api_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "qc_sandbox_dns" {
+resource "aws_route53_record" "qc_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "qc-sandbox.gladefinance.co"
   type    = "A"
@@ -228,7 +228,7 @@ resource "aws_route53_record" "qc_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "external_api_sandbox_dns" {
+resource "aws_route53_record" "external_api_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "api-sandbox.gladefinance.co"
   type    = "A"
@@ -236,7 +236,7 @@ resource "aws_route53_record" "external_api_sandbox_dns" {
   records = [aws_instance.sandbox.public_ip]
 }
 
-resource "aws_route53_record" "pay_sandbox_dns" {
+resource "aws_route53_record" "pay_2_sandbox_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "pay-sandbox.gladefinance.co"
   type    = "A"

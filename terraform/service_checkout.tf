@@ -60,7 +60,7 @@ resource "aws_route53_record" "checkout_v2_external_dns" {
 }
 
 
-resource "aws_route53_record" "checkout_internal_dns" {
+resource "aws_route53_record" "checkout_2_internal_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "checkout-internal-prod-aws.gladefinance.co"
   type    = "A"
@@ -68,7 +68,7 @@ resource "aws_route53_record" "checkout_internal_dns" {
   records = [aws_instance.checkout_service.private_ip]
 }
 
-resource "aws_route53_record" "checkout_external_dns" {
+resource "aws_route53_record" "checkout_2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "checkout-external-prod-aws.gladefinance.co"
   type    = "A"
@@ -76,7 +76,7 @@ resource "aws_route53_record" "checkout_external_dns" {
   records = [aws_instance.checkout_service.public_ip]
 }
 
-resource "aws_route53_record" "checkout_prod_external_dns" {
+resource "aws_route53_record" "checkout_2_prod_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "checkout-prod.gladefinance.co"
   type    = "A"
@@ -84,7 +84,7 @@ resource "aws_route53_record" "checkout_prod_external_dns" {
   records = [aws_instance.checkout_service.public_ip]
 }
 
-resource "aws_route53_record" "checkout_main_external_dns" {
+resource "aws_route53_record" "checkout_2_main_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "checkout.gladefinance.co"
   type    = "A"
@@ -92,7 +92,7 @@ resource "aws_route53_record" "checkout_main_external_dns" {
   records = [aws_instance.checkout_service.public_ip]
 }
 
-resource "aws_route53_record" "checkout_v2_external_dns" {
+resource "aws_route53_record" "checkout_2_v2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "checkout-v2.gladefinance.co"
   type    = "A"

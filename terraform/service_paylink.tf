@@ -52,7 +52,7 @@ resource "aws_route53_record" "payv2_public_external_dns" {
 }
 
 
-resource "aws_route53_record" "pay_internal_dns" {
+resource "aws_route53_record" "pay_2_internal_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "pay-internal-prod-aws.gladefinance.co"
   type    = "A"
@@ -60,7 +60,7 @@ resource "aws_route53_record" "pay_internal_dns" {
   records = [aws_instance.pay_service.private_ip]
 }
 
-resource "aws_route53_record" "pay_external_dns" {
+resource "aws_route53_record" "pay_2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "pay-external-prod-aws.gladefinance.co"
   type    = "A"
@@ -68,7 +68,7 @@ resource "aws_route53_record" "pay_external_dns" {
   records = [aws_instance.pay_service.public_ip]
 }
 
-resource "aws_route53_record" "pay_public_external_dns" {
+resource "aws_route53_record" "pay_2_public_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "pay.gladefinance.co"
   type    = "A"
@@ -76,7 +76,7 @@ resource "aws_route53_record" "pay_public_external_dns" {
   records = [aws_instance.pay_service.public_ip]
 }
 
-resource "aws_route53_record" "payv2_public_external_dns" {
+resource "aws_route53_record" "payv2_2_public_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "pay-v2.gladefinance.co"
   type    = "A"

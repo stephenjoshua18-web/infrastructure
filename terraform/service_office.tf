@@ -69,7 +69,7 @@ resource "aws_route53_record" "public_office_external_dns" {
 
 
 
-resource "aws_route53_record" "office_internal_dns" {
+resource "aws_route53_record" "office_2_internal_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-internal-prod-aws.gladefinance.co"
   type    = "A"
@@ -77,7 +77,7 @@ resource "aws_route53_record" "office_internal_dns" {
   records = [aws_instance.office_service.private_ip]
 }
 
-resource "aws_route53_record" "office_external_dns" {
+resource "aws_route53_record" "office_2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-external-prod-aws.gladefinance.co"
   type    = "A"
@@ -85,7 +85,7 @@ resource "aws_route53_record" "office_external_dns" {
   records = [aws_instance.office_service.public_ip]
 }
 
-resource "aws_route53_record" "office_api_external_dns" {
+resource "aws_route53_record" "office_api_2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-api-external-prod-aws.gladefinance.co"
   type    = "A"
@@ -93,7 +93,7 @@ resource "aws_route53_record" "office_api_external_dns" {
   records = [aws_instance.office_service.public_ip]
 }
 
-resource "aws_route53_record" "public_office_api_external_dns" {
+resource "aws_route53_record" "public_office_api_2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-api.gladefinance.co"
   type    = "A"
@@ -101,7 +101,7 @@ resource "aws_route53_record" "public_office_api_external_dns" {
   records = [aws_instance.office_service.public_ip]
 }
 
-resource "aws_route53_record" "public_office_v2_external_dns" {
+resource "aws_route53_record" "public_2_office_v2_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office-v2.gladefinance.co"
   type    = "A"
@@ -109,7 +109,7 @@ resource "aws_route53_record" "public_office_v2_external_dns" {
   records = [aws_instance.office_service.public_ip]
 }
 
-resource "aws_route53_record" "public_office_external_dns" {
+resource "aws_route53_record" "public_2_office_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "office.gladefinance.co"
   type    = "A"
