@@ -76,3 +76,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_route53_zone" "gladeng_zone" {
   name = "glade.ng"
 }
+
+resource "aws_route53_zone" "gladefinance_zone" {
+  name = "gladefinance.co"
+}
