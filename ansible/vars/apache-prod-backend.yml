@@ -70,9 +70,9 @@ apache_vhosts_ssl:
       </Directory>
   - servername: '{{server_name}}'
     documentroot: '{{server_dir}}'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       ServerAlias *.gladefinance.co
       ErrorLog ${APACHE_LOG_DIR}/error.log

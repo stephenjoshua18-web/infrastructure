@@ -91,8 +91,8 @@ apache_vhosts_ssl:
 
             Options -MultiViews
             RewriteEngine On
-            RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^ index.html [QSA,L]
+            RewriteCond %{HTTP_HOST} ^(.+\.)?glade.ng$ [NC]
+            ReWriteRule ^(.*)$ https://%1gladefinance.co%{REQUEST_URI} [R=301,NC]
         </Directory>
 
 apache_allow_override: "All"

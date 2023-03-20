@@ -487,70 +487,70 @@ apache_vhosts_ssl:
       RewriteEngine on
   - servername: 'core-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/core/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
   
   - servername: 'db-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/db/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
   
   - servername: 'webhook-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/webhook/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
 
 
   - servername: 'checkout-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/checkout/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
 
 
   - servername: 'qc-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/qc/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
 
 
   - servername: 'api-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/api/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
 
   
   - servername: 'mobile-api-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/mobile-api/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
 
 
   - servername: 'dashboard-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/dashboard'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
       SetEnv HTTP_GLADE_ENV {{glade_env}}
@@ -580,18 +580,18 @@ apache_vhosts_ssl:
 
   - servername: 'dashboard-api-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/dashboard-api/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
 
 
   - servername: 'office-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/office'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
       <Directory /var/www/office>
@@ -607,17 +607,17 @@ apache_vhosts_ssl:
 
   - servername: 'office-api-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/office-api/public'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
 
   - servername: 'pay-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/pay'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
       <Directory "/var/www/pay">
@@ -630,9 +630,9 @@ apache_vhosts_ssl:
       </Directory>
   - servername: 'website-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/website'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
 
