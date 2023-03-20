@@ -138,3 +138,124 @@ resource "aws_route53_record" "website_experiment_dns" {
   ttl     = 300
   records = [aws_instance.experiment.public_ip]
 }
+
+resource "aws_route53_record" "experiment_internal_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "experiment-internal-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.private_ip]
+}
+
+resource "aws_route53_record" "experiment_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "experiment-external-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "core_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "core-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "db_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "db-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "webhook_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhook-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_api_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-api-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "office_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "office-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "office_api_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "office-api-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "checkout_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "checkout-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "mobile_api_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "mobile-api-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "qc_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "qc-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "external_api_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "external-api-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "pay_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "pay-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
+resource "aws_route53_record" "website_experiment_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "website-experiment.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.experiment.public_ip]
+}
+
