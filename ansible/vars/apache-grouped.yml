@@ -182,7 +182,149 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
-    
+  - servername: 'core-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'db-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'webhook-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'checkout-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'qc-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'api-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'mobile-api-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'dashboard-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/web'
+    extra_parameters: |
+      <Directory "/var/www/web">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'dashboard-api-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'office-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/web'
+    extra_parameters: |
+      <Directory "/var/www/web">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'office-api-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'pay-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/web'
+    extra_parameters: |
+      <Directory "/var/www/web">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'website-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/website'
+    extra_parameters: |
+      <Directory "/var/www/website">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
 
 
 apache_vhosts_ssl:
@@ -192,7 +334,14 @@ apache_vhosts_ssl:
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
-      RewriteEngine on
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        RewriteCond %{HTTP_HOST} ^glade.ng [NC,OR]
+        ReWriteRule ^(.*)$ https://core-{{glade_env}}.gladefinance.co/$1 [L, R=301,NC]
+      </Directory>
   
   - servername: 'db-{{glade_env}}.glade.ng'
     documentroot: '/var/www/db/public'
@@ -330,6 +479,156 @@ apache_vhosts_ssl:
         RewriteRule ^ index.html [QSA,L]
       </Directory>
   - servername: 'website-{{glade_env}}.glade.ng'
+    documentroot: '/var/www/website'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+  - servername: 'core-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/core/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+  
+  - servername: 'db-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/db/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+  
+  - servername: 'webhook-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/webhook/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+
+
+  - servername: 'checkout-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/checkout/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+
+
+  - servername: 'qc-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/qc/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+
+
+  - servername: 'api-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/api/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+
+  
+  - servername: 'mobile-api-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/mobile-api/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+
+
+  - servername: 'dashboard-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/dashboard'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+      SetEnv HTTP_GLADE_ENV {{glade_env}}
+      SetEnv REACT_APP_DASHBOARD_BASE_URL https://dashboard-api-{{glade_env}}.glade.ng/api/v2
+      SetEnv REACT_APP_CORE_BASE_URL https://core-{{glade_env}}.glade.ng
+      SetEnv REACT_APP_APP_ENV development
+      SetEnv REACT_APP_CHECKOUT_BASE_URL https://core-{{glade_env}}.glade.ng
+      SetEnv REACT_APP_CHECKOUT_FILE_URL https://core-{{glade_env}}.glade.ng/checkout.js
+      SetEnv REACT_APP_GLADE_PAYMENT_URL https://core-{{glade_env}}.glade.ng/checkout.js
+      SetEnv REACT_APP_PAYMENT_PAGE_BASE_URL https://pay-{{glade_env}}.glade.ng
+      SetEnv REACT_APP_APP_NAME Glade
+      SetEnv REACT_APP_SLUG glade
+      SetEnv REACT_APP_PUBLIC_URL
+      SetEnv REACT_APP_API_URL https://dashboard-api-{{glade_env}}.glade.ng/api/v2/
+      <Directory /var/www/dashboard/>
+            Options FollowSymLinks
+            AllowOverride All
+            Require all granted
+
+            AllowOverride All
+
+            Options -MultiViews
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^ index.html [QSA,L]
+      </Directory>
+
+  - servername: 'dashboard-api-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/dashboard-api/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+
+
+  - servername: 'office-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/office'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+      <Directory /var/www/office>
+            Options FollowSymLinks
+            AllowOverride All
+            Require all granted
+
+            Options -MultiViews
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^ index.html [QSA,L]
+        </Directory>
+
+  - servername: 'office-api-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/office-api/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+
+  - servername: 'pay-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/pay'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+      <Directory "/var/www/pay">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        RewriteEngine on
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^ index.html [QSA,L]
+      </Directory>
+  - servername: 'website-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/website'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
