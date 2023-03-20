@@ -34,3 +34,22 @@ resource "aws_route53_record" "qc_external_dns" {
   ttl     = 300
   records = [aws_instance.qc_service.public_ip]
 }
+
+
+
+
+resource "aws_route53_record" "qc_internal_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "qc-internal-prod-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.qc_service.private_ip]
+}
+
+resource "aws_route53_record" "qc_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "qc-external-prod-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.qc_service.public_ip]
+}

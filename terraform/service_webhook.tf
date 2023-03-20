@@ -50,3 +50,37 @@ resource "aws_route53_record" "webhooks_dns" {
   ttl     = 300
   records = [aws_instance.webhook_service.public_ip]
 }
+
+
+
+resource "aws_route53_record" "webhook_internal_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhook-internal-prod-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.private_ip]
+}
+
+resource "aws_route53_record" "webhook_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhook-external-prod-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}
+
+resource "aws_route53_record" "webhook_prod_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhook-service-prod.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}
+
+resource "aws_route53_record" "webhooks_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhooks.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}

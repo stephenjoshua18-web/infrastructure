@@ -74,3 +74,62 @@ resource "aws_route53_record" "dashboard_prod_public_external_dns" {
   ttl     = 300
   records = [aws_instance.dashboard_service.public_ip]
 }
+
+
+
+resource "aws_route53_record" "dashboard_internal_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-internal-prod-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.private_ip]
+}
+
+resource "aws_route53_record" "dashboard_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-external-prod-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_api_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-api-external-prod-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_public_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_v2_public_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-v2.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_api_public_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-api.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_prod_public_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-prod.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.dashboard_service.public_ip]
+}
+

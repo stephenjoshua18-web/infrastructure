@@ -138,3 +138,124 @@ resource "aws_route53_record" "website_staging_dns" {
   ttl     = 300
   records = [aws_instance.staging.public_ip]
 }
+
+
+resource "aws_route53_record" "staging_internal_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "staging-internal-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.private_ip]
+}
+
+resource "aws_route53_record" "staging_external_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "staging-external-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "core_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "core-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "db_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "db-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "webhook_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhook-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_api_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-api-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "office_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "office-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "office_api_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "office-api-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "checkout_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "checkout-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "mobile_api_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "mobile-api-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "qc_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "qc-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "external_api_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "external-api-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "pay_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "pay-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "website_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "website-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
