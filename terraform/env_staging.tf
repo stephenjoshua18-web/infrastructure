@@ -141,7 +141,7 @@ resource "aws_route53_record" "website_staging_dns" {
 
 
 resource "aws_route53_record" "staging_2_internal_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "staging-internal-aws.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -149,7 +149,7 @@ resource "aws_route53_record" "staging_2_internal_dns" {
 }
 
 resource "aws_route53_record" "staging_2_external_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "staging-external-aws.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -157,7 +157,7 @@ resource "aws_route53_record" "staging_2_external_dns" {
 }
 
 resource "aws_route53_record" "core_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "core-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -165,7 +165,7 @@ resource "aws_route53_record" "core_2_staging_dns" {
 }
 
 resource "aws_route53_record" "db_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "db-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -173,7 +173,7 @@ resource "aws_route53_record" "db_2_staging_dns" {
 }
 
 resource "aws_route53_record" "webhook_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "webhook-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -181,7 +181,7 @@ resource "aws_route53_record" "webhook_2_staging_dns" {
 }
 
 resource "aws_route53_record" "dashboard_api_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "dashboard-api-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -189,7 +189,7 @@ resource "aws_route53_record" "dashboard_api_2_staging_dns" {
 }
 
 resource "aws_route53_record" "dashboard_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "dashboard-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -197,7 +197,7 @@ resource "aws_route53_record" "dashboard_2_staging_dns" {
 }
 
 resource "aws_route53_record" "office_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "office-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -205,7 +205,7 @@ resource "aws_route53_record" "office_2_staging_dns" {
 }
 
 resource "aws_route53_record" "office_api_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "office-api-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -213,7 +213,7 @@ resource "aws_route53_record" "office_api_2_staging_dns" {
 }
 
 resource "aws_route53_record" "checkout_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "checkout-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -221,7 +221,7 @@ resource "aws_route53_record" "checkout_2_staging_dns" {
 }
 
 resource "aws_route53_record" "mobile_api_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "mobile-api-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -229,7 +229,7 @@ resource "aws_route53_record" "mobile_api_2_staging_dns" {
 }
 
 resource "aws_route53_record" "qc_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "qc-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -237,7 +237,7 @@ resource "aws_route53_record" "qc_2_staging_dns" {
 }
 
 resource "aws_route53_record" "external_api_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "external-api-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -245,7 +245,7 @@ resource "aws_route53_record" "external_api_2_staging_dns" {
 }
 
 resource "aws_route53_record" "pay_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "pay-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -253,7 +253,7 @@ resource "aws_route53_record" "pay_2_staging_dns" {
 }
 
 resource "aws_route53_record" "website_2_staging_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "website-staging.gladefinance.co"
   type    = "A"
   ttl     = 300

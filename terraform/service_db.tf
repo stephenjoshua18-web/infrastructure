@@ -56,7 +56,7 @@ resource "aws_route53_record" "db-prod-public-external-dns" {
 
 
 resource "aws_route53_record" "db_2_internal_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "db-internal-prod-aws.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -64,7 +64,7 @@ resource "aws_route53_record" "db_2_internal_dns" {
 }
 
 resource "aws_route53_record" "db-2-service-external-dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "db-external-prod-aws.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -72,7 +72,7 @@ resource "aws_route53_record" "db-2-service-external-dns" {
 }
 
 resource "aws_route53_record" "db-2-service-public-external-dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "db-service.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -80,7 +80,7 @@ resource "aws_route53_record" "db-2-service-public-external-dns" {
 }
 
 resource "aws_route53_record" "db-2-prod-public-external-dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "db-prod.gladefinance.co"
   type    = "A"
   ttl     = 300

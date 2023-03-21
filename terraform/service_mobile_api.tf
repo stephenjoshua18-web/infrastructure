@@ -55,7 +55,7 @@ resource "aws_route53_record" "mobile_public_dns" {
 
 
 resource "aws_route53_record" "mobile_api_2_internal_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "mobile-api-internal-prod-aws.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -63,7 +63,7 @@ resource "aws_route53_record" "mobile_api_2_internal_dns" {
 }
 
 resource "aws_route53_record" "mobile_api_2_mobile_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "mobile-api-mobile-prod-aws.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -71,7 +71,7 @@ resource "aws_route53_record" "mobile_api_2_mobile_dns" {
 }
 
 resource "aws_route53_record" "mobile_api_2_public_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "mobile-api.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -79,7 +79,7 @@ resource "aws_route53_record" "mobile_api_2_public_dns" {
 }
 
 resource "aws_route53_record" "mobile_2_public_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "mobile.gladefinance.co"
   type    = "A"
   ttl     = 300
