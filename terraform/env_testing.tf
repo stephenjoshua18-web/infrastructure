@@ -150,7 +150,7 @@ resource "aws_route53_record" "website_testing_dns" {
 }
 
 resource "aws_route53_record" "testing_2_internal_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "testing-internal-aws.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -158,7 +158,7 @@ resource "aws_route53_record" "testing_2_internal_dns" {
 }
 
 resource "aws_route53_record" "testing_2_external_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "testing-external-aws.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -166,7 +166,7 @@ resource "aws_route53_record" "testing_2_external_dns" {
 }
 
 resource "aws_route53_record" "core_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "core-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -174,7 +174,7 @@ resource "aws_route53_record" "core_2_testing_dns" {
 }
 
 resource "aws_route53_record" "db_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "db-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -182,7 +182,7 @@ resource "aws_route53_record" "db_2_testing_dns" {
 }
 
 resource "aws_route53_record" "webhook_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "webhook-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -190,7 +190,7 @@ resource "aws_route53_record" "webhook_2_testing_dns" {
 }
 
 resource "aws_route53_record" "dashboard_api_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "dashboard-api-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -198,7 +198,7 @@ resource "aws_route53_record" "dashboard_api_2_testing_dns" {
 }
 
 resource "aws_route53_record" "dashboard_api_2_v2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "dashboard-api-v2-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -206,7 +206,7 @@ resource "aws_route53_record" "dashboard_api_2_v2_testing_dns" {
 }
 
 resource "aws_route53_record" "dashboard_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "dashboard-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -214,7 +214,7 @@ resource "aws_route53_record" "dashboard_2_testing_dns" {
 }
 
 resource "aws_route53_record" "office_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "office-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -222,7 +222,7 @@ resource "aws_route53_record" "office_2_testing_dns" {
 }
 
 resource "aws_route53_record" "office_api_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "office-api-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -230,7 +230,7 @@ resource "aws_route53_record" "office_api_2_testing_dns" {
 }
 
 resource "aws_route53_record" "checkout_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "checkout-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -238,7 +238,7 @@ resource "aws_route53_record" "checkout_2_testing_dns" {
 }
 
 resource "aws_route53_record" "mobile_api_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "mobile-api-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -246,7 +246,7 @@ resource "aws_route53_record" "mobile_api_2_testing_dns" {
 }
 
 resource "aws_route53_record" "qc_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "qc-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -254,7 +254,7 @@ resource "aws_route53_record" "qc_2_testing_dns" {
 }
 
 resource "aws_route53_record" "external_api_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "external-api-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -262,7 +262,7 @@ resource "aws_route53_record" "external_api_2_testing_dns" {
 }
 
 resource "aws_route53_record" "pay_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "pay-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
@@ -270,7 +270,7 @@ resource "aws_route53_record" "pay_2_testing_dns" {
 }
 
 resource "aws_route53_record" "website_2_testing_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "website-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
