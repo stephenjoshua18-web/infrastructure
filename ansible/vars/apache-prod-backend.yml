@@ -39,8 +39,8 @@ apache_global_vhost_settings: |
 
 apache_vhosts:
   # Additional optional properties: 'serveradmin, serveralias, extra_parameters'.
-  - servername: '{{server_name}}'
-    documentroot: '{{server_dir}}'
+  - servername: '{{server_name_gladeng}}'
+    documentroot: '{{server_dir_gladeng}}'
     extra_parameters: |
       ServerAlias *.glade.ng
       <Directory "/var/www/html/public">
@@ -51,28 +51,36 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
-
-apache_vhosts_ssl:
-  - servername: '{{server_name}}'
-    documentroot: '{{server_dir}}'
-    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
-    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
-    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+  - servername: '{{server_name_gladefinance}}'
+    documentroot: '{{server_dir_gladefinance}}'
     extra_parameters: |
-      ServerAlias *.glade.ng
+      ServerAlias *.gladefinance.co
       <Directory "/var/www/html/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
         ReWriteEngine on
-        RewriteCond %{HTTP_HOST} ^(.+\.)?glade.ng$ [NC]
-        ReWriteRule ^(.*)$ https://%1gladefinance.co%{REQUEST_URI} [R=301,NC]
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
-  - servername: '{{server_name}}'
-    documentroot: '{{server_dir}}'
+
+apache_vhosts_ssl:
+  - servername: '{{server_name_gladeng}}'
+    documentroot: '{{server_dir_gladeng}}'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ServerAlias *.glade.ng
+      RewriteEngine on
+      RewriteCond %{HTTP_HOST} (.*)\.glade\.ng
+      ReWriteRule ^(.*)$ https:///%1.gladefinance.co$1 [L,R=301]
+
+  - servername: '{{server_name_gladefinance}}'
+    documentroot: '{{server_dir_gladefinance}}'
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       ServerAlias *.gladefinance.co
       ErrorLog ${APACHE_LOG_DIR}/error.log
