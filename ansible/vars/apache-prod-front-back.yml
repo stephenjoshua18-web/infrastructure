@@ -39,7 +39,7 @@ apache_global_vhost_settings: |
 
 apache_vhosts:
   # Additional optional properties: 'serveradmin, serveralias, extra_parameters'.
-  - servername: '{{backend_server_name}}'
+  - servername: '{{backend_server_name_gladeng}}'
     documentroot: '/var/www/html/public'
     extra_parameters: |
       ServerAlias *.glade.ng
@@ -51,7 +51,31 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
-  - servername: '{{frontend_server_name}}'
+  - servername: '{{frontend_server_name_gladeng}}'
+    documentroot: '/var/www/web'
+    extra_parameters: |
+      ServerAlias *.glade.ng
+      <Directory "/var/www/web">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: '{{backend_server_name_gladefinance}}'
+    documentroot: '/var/www/html/public'
+    extra_parameters: |
+      ServerAlias *.glade.ng
+      <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: '{{frontend_server_name_gladefinance}}'
     documentroot: '/var/www/web'
     extra_parameters: |
       ServerAlias *.glade.ng
@@ -65,7 +89,7 @@ apache_vhosts:
       </Directory>
 
 apache_vhosts_ssl:
-  - servername: '{{backend_server_name}}'
+  - servername: '{{backend_server_name_gladeng}}'
     documentroot: '/var/www/html/public'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
@@ -73,7 +97,10 @@ apache_vhosts_ssl:
     extra_parameters: |
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
-  - servername: '{{frontend_server_name}}'
+      RewriteEngine on
+      RewriteCond %{HTTP_HOST} (.*)\.glade\.ng
+      ReWriteRule ^(.*)$ https:///%1.gladefinance.co$1 [L,R=301]
+  - servername: '{{frontend_server_name_gladeng}}'
     documentroot: '/var/www/web'
     certificate_file: "/opt/glade/ssl/gladeng.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
@@ -82,6 +109,27 @@ apache_vhosts_ssl:
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
       ServerAlias *.glade.ng
+      RewriteEngine on
+      RewriteCond %{HTTP_HOST} (.*)\.glade\.ng
+      ReWriteRule ^(.*)$ https:///%1.gladefinance.co$1 [L,R=301]
+
+  - servername: '{{backend_server_name_gladefinance}}'
+    documentroot: '/var/www/html/public'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+  - servername: '{{frontend_server_name_gladefinance}}'
+    documentroot: '/var/www/web'
+    certificate_file: "/opt/glade/ssl/gladeng.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      ServerAlias *.gladefinance.co
       <Directory /var/www/web/>
             Options FollowSymLinks
             AllowOverride All
@@ -90,9 +138,6 @@ apache_vhosts_ssl:
             AllowOverride All
 
             Options -MultiViews
-            RewriteEngine On
-            RewriteCond %{HTTP_HOST} ^(.+\.)?glade.ng$ [NC]
-            ReWriteRule ^(.*)$ https://%1gladefinance.co%{REQUEST_URI} [R=301,NC]
         </Directory>
 
 apache_allow_override: "All"

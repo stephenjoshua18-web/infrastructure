@@ -334,14 +334,9 @@ apache_vhosts_ssl:
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
-      <Directory "/var/www/html/public">
-        AllowOverride All
-        Options -Indexes +FollowSymLinks
-        Require all granted
-        ReWriteEngine on
-        RewriteCond %{HTTP_HOST} ^glade.ng [NC,OR]
-        ReWriteRule ^(.*)$ https://core-{{glade_env}}.gladefinance.co/$1 [L, R=301,NC]
-      </Directory>
+        RewriteEngine on
+        ReWriteRule ^(.*)$ https://core-{{glade_env}}.gladefinance.co/$1 [L,R=301]
+
   
   - servername: 'db-{{glade_env}}.glade.ng'
     documentroot: '/var/www/db/public'
@@ -350,6 +345,7 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
+      ReWriteRule ^(.*)$ https://db-{{glade_env}}.gladefinance.co/$1 [L,R=301]
   
   - servername: 'webhook-{{glade_env}}.glade.ng'
     documentroot: '/var/www/webhook/public'
@@ -358,7 +354,7 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
       RewriteEngine on
-
+      ReWriteRule ^(.*)$ https://webhook-{{glade_env}}.gladefinance.co/$1 [L,R=301]
 
   - servername: 'checkout-{{glade_env}}.glade.ng'
     documentroot: '/var/www/checkout/public'
