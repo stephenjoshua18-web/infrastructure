@@ -29,7 +29,7 @@
     DocumentRoot "/var/www/blog-backend"
     ServerName blog-backend.glade.ng
         Redirect permanent / https://blog-backend.glade.ng
-         <Directory /var/www/blog/>
+         <Directory /var/www/blog-backend/>
             Options FollowSymLinks
             Options -Indexes
             AllowOverride All
@@ -38,10 +38,10 @@
 
 </VirtualHost>
 <VirtualHost *:80>
-    DocumentRoot "/var/www/blog"
+    DocumentRoot "/var/www/blog-backend"
     ServerName blog.glade.ng
         Redirect permanent / https://blog.glade.ng
-         <Directory /var/www/blog/>
+         <Directory /var/www/blog-backend/>
             Options FollowSymLinks
             Options -Indexes
             AllowOverride All
@@ -146,12 +146,8 @@
 </VirtualHost>
 <VirtualHost *:443>
     ServerAdmin webmaster@gladepay.com
-    DocumentRoot /var/www/blog
+    DocumentRoot /var/www/blog-backend
     ServerName blog.glade.ng
-
-    ProxyPreserveHost On
-    ProxyPass / http://localhost:3033/
-    ProxyPassReverse / http://localhost:3033/
 
     SSLEngine on
     SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
