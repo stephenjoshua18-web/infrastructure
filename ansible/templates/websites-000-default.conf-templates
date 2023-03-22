@@ -39,8 +39,33 @@
 </VirtualHost>
 <VirtualHost *:80>
     DocumentRoot "/var/www/blog-backend"
+    ServerName blog-backend.gladefinance.co
+        Redirect permanent / https://blog-backend.gladefinance.co
+         <Directory /var/www/blog-backend/>
+            Options FollowSymLinks
+            Options -Indexes
+            AllowOverride All
+            Require all granted
+        </Directory>
+
+
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "/var/www/blog-backend"
     ServerName blog.glade.ng
         Redirect permanent / https://blog.glade.ng
+         <Directory /var/www/blog-backend/>
+            Options FollowSymLinks
+            Options -Indexes
+            AllowOverride All
+            Require all granted
+        </Directory>
+
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "/var/www/blog-backend"
+    ServerName blog.gladefinance.co
+        Redirect permanent / https://blog.gladefinance.co
          <Directory /var/www/blog-backend/>
             Options FollowSymLinks
             Options -Indexes
@@ -128,26 +153,55 @@
     ServerAdmin webmaster@gladepay.com
     DocumentRoot /var/www/blog-backend
     ServerName blog-backend.glade.ng
-    <Directory /var/www/blog/>
+    <Directory /var/www/blog-backend/>
+            Options FollowSymLinks
+            Options -Indexes
+            AllowOverride All
+            Require all granted
+        </Directory>
+    
+    RewriteEngine on
+    ReWriteRule ^(.*)$ https://blog-backend.gladefinance.co/$1 [L,R=301]
+
+    SSLEngine on
+    SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
+    SSLCertificateKeyFile /opt/glade/ssl/gladeng.key-file
+    SSLCertificateChainFile /opt/glade/ssl/gladeng.bundle-file
+    SSLProtocol all -SSLv2 -SSLv3 -TLSv1
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerAdmin webmaster@gladepay.com
+    DocumentRoot /var/www/blog-backend
+    ServerName blog-backend.gladefinance.co
+    <Directory /var/www/blog-backend/>
             Options FollowSymLinks
             Options -Indexes
             AllowOverride All
             Require all granted
         </Directory>
 
+
     SSLEngine on
-    SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
-    SSLCertificateKeyFile /opt/glade/ssl/gladeng.key-file
-    SSLCertificateChainFile /opt/glade/ssl/gladeng.bundle-file
+    SSLCertificateFile /opt/glade/ssl/gladefinance.crt-file
+    SSLCertificateKeyFile /opt/glade/ssl/gladefinance.key-file
+    SSLCertificateChainFile /opt/glade/ssl/gladefinance.bundle-file
     SSLProtocol all -SSLv2 -SSLv3 -TLSv1
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+
 <VirtualHost *:443>
     ServerAdmin webmaster@gladepay.com
     DocumentRoot /var/www/blog-backend
     ServerName blog.glade.ng
+    
+    RewriteEngine on
+    ReWriteRule ^(.*)$ https://blog.gladefinance.co/$1 [L,R=301]
 
     SSLEngine on
     SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
@@ -158,6 +212,23 @@
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+
+<VirtualHost *:443>
+    ServerAdmin webmaster@gladepay.com
+    DocumentRoot /var/www/blog-backend
+    ServerName blog.gladefinance.co
+    
+
+    SSLEngine on
+    SSLCertificateFile /opt/glade/ssl/gladefinance.crt-file
+    SSLCertificateKeyFile /opt/glade/ssl/gladefinance.key-file
+    SSLCertificateChainFile /opt/glade/ssl/gladefinance.bundle-file
+    SSLProtocol all -SSLv2 -SSLv3 -TLSv1
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
 <VirtualHost *:443>
     ServerAdmin webmaster@gladepay.com
     DocumentRoot /var/www/blog-staging
