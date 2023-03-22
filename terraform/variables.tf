@@ -9,3 +9,6 @@ variable "volume_size" {
 variable "instance_profile_arn"{
   default = "secrets_manager_readonly"
 }
+variable "website_ip"{
+  default = "63.34.67.115"
+}
