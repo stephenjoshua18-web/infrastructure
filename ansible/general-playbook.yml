@@ -150,7 +150,7 @@
   become: true
   vars:
     frontend_server_name_gladeng: dashboard.glade.ng
-    backend_server_name: dashboard-api.glade.ng
+    backend_server_name_gladeng: dashboard-api.glade.ng
     frontend_server_name_gladefinance: dashboard.gladefinance.co
     backend_server_name_gladefinance: dashboard-api.gladefinance.co
   vars_files:
