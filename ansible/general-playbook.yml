@@ -106,18 +106,9 @@
   vars:
     frontend_server_name_gladeng: pay.glade.ng
     backend_server_name_gladeng: pay-api.glade.ng
-  vars_files:
-    - vars/apache-prod-front-back.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on Pay Servers
-  hosts: pay
-  remote_user: ubuntu
-  become: true
-  vars:
     frontend_server_name_gladefinance: pay.gladefinance.co
     backend_server_name_gladefinance: pay-api.gladefinance.co
+
   vars_files:
     - vars/apache-prod-front-back.yml
   roles:
