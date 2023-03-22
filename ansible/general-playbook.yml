@@ -121,16 +121,6 @@
   vars:
     server_name_gladeng: core-external-prod-aws.glade.ng
     server_dir_gladeng: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on Core Servers
-  hosts: core
-  remote_user: ubuntu
-  become: true
-  vars:
     server_name_gladefinance: core-external-prod-aws.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
@@ -146,16 +136,6 @@
   vars:
     server_name_gladeng: db-external-prod-aws.glade.ng
     server_dir_gladeng: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on DB Servers
-  hosts: db_service
-  remote_user: ubuntu
-  become: true
-  vars:
     server_name_gladefinance: db-external-prod-aws.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
@@ -171,16 +151,6 @@
   vars:
     frontend_server_name_gladeng: dashboard.glade.ng
     backend_server_name: dashboard-api.glade.ng
-  vars_files:
-    - vars/apache-prod-front-back.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on dashboard Servers
-  hosts: dashboard
-  remote_user: ubuntu
-  become: true
-  vars:
     frontend_server_name_gladefinance: dashboard.gladefinance.co
     backend_server_name_gladefinance: dashboard-api.gladefinance.co
   vars_files:
@@ -196,16 +166,6 @@
   vars:
     server_name_gladeng: checkout-external-prod-aws.glade.ng
     server_dir_gladeng: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on checkout Servers
-  hosts: checkout
-  remote_user: ubuntu
-  become: true
-  vars:
     server_name_gladefinance: checkout-external-prod-aws.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
@@ -221,22 +181,13 @@
   vars:
     frontend_server_name_gladeng: office.glade.ng
     backend_server_name_gladeng: office-api.glade.ng
-  vars_files:
-    - vars/apache-prod-front-back.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on office Servers
-  hosts: office
-  remote_user: ubuntu
-  become: true
-  vars:
     frontend_server_name_gladefinance: office.gladefinance.co
     backend_server_name_gladefinance: office-api.gladefinance.co
   vars_files:
     - vars/apache-prod-front-back.yml
   roles:
     - { role: geerlingguy.apache }
+
 
 - name: Setup Apache on qc Servers
   hosts: qc
@@ -245,22 +196,13 @@
   vars:
     server_name_gladeng: qc-external-prod-aws.glade.ng
     server_dir_gladeng: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on qc Servers
-  hosts: qc
-  remote_user: ubuntu
-  become: true
-  vars:
     server_name_gladefinance: qc-external-prod-aws.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
     - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
+
 
 - name: Setup Apache on webhook Servers
   hosts: webhook
@@ -269,16 +211,6 @@
   vars:
     server_name_gladeng: webhoook-external-prod-aws.glade.ng
     server_dir_gladeng: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on webhook Servers
-  hosts: webhook
-  remote_user: ubuntu
-  become: true
-  vars:
     server_name_gladefinance: webhoook-external-prod-aws.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
@@ -294,22 +226,13 @@
   vars:
     server_name_gladeng: mobile-api-external-prod-aws.glade.ng
     server_dir_gladeng: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on mobile Servers
-  hosts: mobile
-  remote_user: ubuntu
-  become: true
-  vars:
     server_name_gladefinance: mobile-api-external-prod-aws.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
     - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
+
 
 - name: Setup Apache on Proxy
   hosts: proxy
@@ -318,16 +241,6 @@
   vars:
     server_name_gladeng: proxy.glade.ng
     server_dir_gladeng: /var/www/html/
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on Proxy
-  hosts: proxy
-  remote_user: ubuntu
-  become: true
-  vars:
     server_name_gladefinance: proxy.gladefinance.co
     server_dir_gladefinance: /var/www/html/
   vars_files:
@@ -343,22 +256,13 @@
   vars:
     server_name_gladeng: external-api-external-prod-aws.glade.ng
     server_dir_gladeng: /var/www/html/public
-  vars_files:
-    - vars/apache-prod-backend.yml
-  roles:
-    - { role: geerlingguy.apache }
-
-- name: Setup Apache on external api Servers
-  hosts: external_api
-  remote_user: ubuntu
-  become: true
-  vars:
     server_name_gladefinance: external-api-external-prod-aws.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
     - vars/apache-prod-backend.yml
   roles:
     - { role: geerlingguy.apache }
+
 
 - name: Remove old apache configs
   hosts: all
