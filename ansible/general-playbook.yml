@@ -128,7 +128,7 @@
   remote_user: ubuntu
   become: true
   vars:
-    server_name_name_gladeng: core-external-prod-aws.glade.ng
+    server_name_gladeng: core-external-prod-aws.glade.ng
     server_dir_gladeng: /var/www/html/public
   vars_files:
     - vars/apache-prod-backend.yml
