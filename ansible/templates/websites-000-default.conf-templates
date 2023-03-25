@@ -118,7 +118,7 @@
     ServerAlias www.glade.ng
 
     RewriteEngine on
-    ReWriteRule ^(.*)$ https://gladefinance.co/$1 [L,R=301]
+    ReWriteRule ^(.*)$ https://gladefinance.co [L,R=301]
 
     SSLEngine on
     SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
