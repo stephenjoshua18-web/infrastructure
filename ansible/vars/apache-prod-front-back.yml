@@ -131,6 +131,13 @@ apache_vhosts_ssl:
       CustomLog ${APACHE_LOG_DIR}/access.log combined
       ServerAlias *.gladefinance.co
       RewriteEngine on
+      # Don't rewrite files or directories
+      # Don't rewrite files or directories
+      RewriteCond %{REQUEST_FILENAME} -f [OR]
+      RewriteCond %{REQUEST_FILENAME} -d
+      RewriteRule ^ - [L]
+      # Rewrite everything else to index.html to allow html5 state links
+      RewriteRule ^ index.html [L]
       <Directory /var/www/web/>
             Options FollowSymLinks
             AllowOverride All
@@ -138,6 +145,12 @@ apache_vhosts_ssl:
 
             AllowOverride All
             RewriteEngine on
+            # Don't rewrite files or directories
+            RewriteCond %{REQUEST_FILENAME} -f [OR]
+            RewriteCond %{REQUEST_FILENAME} -d
+            RewriteRule ^ - [L]
+            # Rewrite everything else to index.html to allow html5 state links
+            RewriteRule ^ index.html [L]
             Options -MultiViews
         </Directory>
 
