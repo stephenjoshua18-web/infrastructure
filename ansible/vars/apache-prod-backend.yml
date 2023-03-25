@@ -74,7 +74,7 @@ apache_vhosts_ssl:
       ServerAlias *.glade.ng
       RewriteEngine on
       RewriteCond %{HTTP_HOST} (.*)\.glade\.ng
-      ReWriteRule ^(.*)$ https:///%1.gladefinance.co$1 [L,R=301]
+      ReWriteRule ^(.*)$ https://%1.gladefinance.co$1 [L,R=301]
 
   - servername: '{{server_name_gladefinance}}'
     documentroot: '{{server_dir_gladefinance}}'
@@ -83,6 +83,7 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       ServerAlias *.gladefinance.co
+      RewriteEngine on
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
       

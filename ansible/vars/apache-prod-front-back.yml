@@ -111,7 +111,7 @@ apache_vhosts_ssl:
       ServerAlias *.glade.ng
       RewriteEngine on
       RewriteCond %{HTTP_HOST} (.*)\.glade\.ng
-      ReWriteRule ^(.*)$ https:///%1.gladefinance.co$1 [L,R=301]
+      ReWriteRule ^(.*)$ https://%1.gladefinance.co$1 [L,R=301]
 
   - servername: '{{backend_server_name_gladefinance}}'
     documentroot: '/var/www/html/public'
@@ -130,13 +130,14 @@ apache_vhosts_ssl:
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
       ServerAlias *.gladefinance.co
+      RewriteEngine on
       <Directory /var/www/web/>
             Options FollowSymLinks
             AllowOverride All
             Require all granted
 
             AllowOverride All
-
+            RewriteEngine on
             Options -MultiViews
         </Directory>
 
