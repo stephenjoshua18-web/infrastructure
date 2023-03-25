@@ -1,0 +1,6 @@
+# Role link: https://galaxy.ansible.com/geerlingguy/redis
+# GitHub Link: https://github.com/geerlingguy/ansible-role-redis
+
+redis_extra_config: |-
+  unixsocket /var/run/redis/redis-server.sock
+  unixsocketperm 777
