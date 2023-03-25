@@ -16,3 +16,6 @@ variable "website_ip"{
 variable "crossborder_ip" {
   default = "54.246.31.63"
 }
+variable "providus_ip" {
+  default = "63.32.57.146"
+}
