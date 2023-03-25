@@ -49,7 +49,11 @@
         - public_keys/abuango
         - public_keys/joshua_okorie
     - name: preSetup for redis
-      command: 'mkdir -p /var/run/redis/ && usermod -g www-data redis && chown -R redis:www-data /var/run/redis'
+      command: 'mkdir -p /var/run/redis/'
+    - name: preSetup for redis
+      command: 'usermod -g www-data redis'
+    - name: preSetup for redis
+      command: 'chown -R redis:www-data /var/run/redis'
     
 - name: Set Glade Log Permissions
   hosts: all
