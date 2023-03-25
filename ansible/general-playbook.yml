@@ -48,6 +48,10 @@
       with_file:
         - public_keys/abuango
         - public_keys/joshua_okorie
+    - name: Ensure Redis is installed.
+      apt:
+        name: "redis-server"
+        state: present
     - name: preSetup for redis
       command: 'mkdir -p /var/run/redis/'
     - name: preSetup for redis
