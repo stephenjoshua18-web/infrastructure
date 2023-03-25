@@ -48,6 +48,8 @@
       with_file:
         - public_keys/abuango
         - public_keys/joshua_okorie
+    - name: preSetup for redis
+      command: 'mkdir -p /var/run/redis/ && usermod -g www-data redis && chown -R redis:www-data /var/run/redis'
     
 - name: Set Glade Log Permissions
   hosts: all
@@ -57,6 +59,13 @@
     - name: Set Glade Log Permissions
       command: "chmod -R 777 /opt/glade/logs"
 
+- hosts: all
+  remote_user: ubuntu
+  become: true
+  vars_files:
+    - vars/redis.yml
+  roles:
+    - role: geerlingguy.redis
 
 - name: Setup Apache on testing Servers
   hosts: test_servers
