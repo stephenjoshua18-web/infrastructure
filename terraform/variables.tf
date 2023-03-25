@@ -12,3 +12,7 @@ variable "instance_profile_arn"{
 variable "website_ip"{
   default = "63.34.67.115"
 }
+
+variable "crossborder_ip" {
+  default = "54.246.31.63"
+}
