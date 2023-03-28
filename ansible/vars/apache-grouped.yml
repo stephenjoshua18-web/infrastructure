@@ -400,19 +400,7 @@ apache_vhosts_ssl:
     certificate_key_file: "/opt/glade/ssl/gladeng.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladeng.bundle-file"
     extra_parameters: |
-      RewriteEngine on
-      SetEnv HTTP_GLADE_ENV {{glade_env}}
-      SetEnv REACT_APP_DASHBOARD_BASE_URL https://dashboard-api-{{glade_env}}.gladefinance.co/api/v2
-      SetEnv REACT_APP_CORE_BASE_URL https://core-{{glade_env}}.gladefinance.co
-      SetEnv REACT_APP_APP_ENV development
-      SetEnv REACT_APP_CHECKOUT_BASE_URL https://core-{{glade_env}}.gladefinance.co
-      SetEnv REACT_APP_CHECKOUT_FILE_URL https://core-{{glade_env}}.gladefinance.co/checkout.js
-      SetEnv REACT_APP_GLADE_PAYMENT_URL https://core-{{glade_env}}.gladefinance.co/checkout.js
-      SetEnv REACT_APP_PAYMENT_PAGE_BASE_URL https://pay-{{glade_env}}.gladefinance.co
-      SetEnv REACT_APP_APP_NAME Glade
-      SetEnv REACT_APP_SLUG glade
-      SetEnv REACT_APP_PUBLIC_URL
-      SetEnv REACT_APP_API_URL https://dashboard-api-{{glade_env}}.gladefinance.co/api/v2/
+      
       <Directory /var/www/dashboard/>
             Options FollowSymLinks
             AllowOverride All
@@ -423,7 +411,7 @@ apache_vhosts_ssl:
             Options -MultiViews
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^ index.html [QSA,L]
+            ReWriteRule ^(.*)$ https://dashboard-{{glade_env}}.gladefinance.co/$1 [L,R=301]
       </Directory>
 
   - servername: 'dashboard-api-{{glade_env}}.glade.ng'
@@ -552,18 +540,7 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
-      SetEnv HTTP_GLADE_ENV {{glade_env}}
-      SetEnv REACT_APP_DASHBOARD_BASE_URL https://dashboard-api-{{glade_env}}.gladefinance.co/api/v2
-      SetEnv REACT_APP_CORE_BASE_URL https://core-{{glade_env}}.gladefinance.co
-      SetEnv REACT_APP_APP_ENV development
-      SetEnv REACT_APP_CHECKOUT_BASE_URL https://core-{{glade_env}}.gladefinance.co
-      SetEnv REACT_APP_CHECKOUT_FILE_URL https://core-{{glade_env}}.gladefinance.co/checkout.js
-      SetEnv REACT_APP_GLADE_PAYMENT_URL https://core-{{glade_env}}.gladefinance.co/checkout.js
-      SetEnv REACT_APP_PAYMENT_PAGE_BASE_URL https://pay-{{glade_env}}.gladefinance.co
-      SetEnv REACT_APP_APP_NAME Glade
-      SetEnv REACT_APP_SLUG glade
-      SetEnv REACT_APP_PUBLIC_URL
-      SetEnv REACT_APP_API_URL https://dashboard-api-{{glade_env}}.gladefinance.co/api/v2/
+      
       <Directory /var/www/dashboard/>
             Options FollowSymLinks
             AllowOverride All
