@@ -16,7 +16,7 @@
     DocumentRoot "/var/www/html"
     ServerName gladefinance.co
     ServerAlias www.gladefinance.co
-    Redirect permanent / https://gladefinance.co 
+    Redirect permanent / https:www//gladefinance.co 
          <Directory /var/www/html/>
             Options FollowSymLinks
             Options -Indexes
