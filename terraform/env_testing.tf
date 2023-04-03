@@ -189,7 +189,7 @@ resource "aws_route53_record" "db_2_testing_dns" {
   records = [aws_instance.testing.public_ip]
 }
 
-resource "aws_route53_record" "api2_testing_dns" {
+resource "aws_route53_record" "api3_testing_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "api-testing.gladefinance.co"
   type    = "A"
