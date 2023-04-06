@@ -161,8 +161,15 @@
             Require all granted
         </Directory>
     
+
+    <Location "/wp-admin">
+     AuthType Basic
+     AuthName "Restricted Content"
+     AuthUserFile /etc/apache2/.htpasswd
+     Require user hello@glade.ng
+     </Location>
+
     RewriteEngine on
-    ReWriteRule ^(.*)$ https://blog-backend.gladefinance.co/$1 [L,R=301]
 
     SSLEngine on
     SSLCertificateFile /opt/glade/ssl/gladeng.crt-file
@@ -184,6 +191,13 @@
             AllowOverride All
             Require all granted
         </Directory>
+     
+    <Location "/wp-admin">
+     AuthType Basic
+     AuthName "Restricted Content"
+     AuthUserFile /etc/apache2/.htpasswd
+     Require user hello@glade.ng
+     </Location>
 
 
     SSLEngine on
