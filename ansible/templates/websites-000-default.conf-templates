@@ -116,6 +116,12 @@
     DocumentRoot /var/www/html
     ServerName glade.ng
     ServerAlias www.glade.ng
+    
+         <Directory "/var/www/html">
+            Options -Indexes
+            AllowOverride None
+            Require all granted
+        </Directory>
 
     RewriteEngine on
     RewriteCond %{HTTP_HOST} ^glade\.ng$ [NC]
