@@ -123,6 +123,14 @@ resource "aws_route53_record" "external_api_staging_dns" {
   records = [aws_instance.staging.public_ip]
 }
 
+resource "aws_route53_record" "external_api1_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "api-staging.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
 resource "aws_route53_record" "pay_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "pay-staging.glade.ng"
@@ -239,6 +247,14 @@ resource "aws_route53_record" "qc_2_staging_dns" {
 resource "aws_route53_record" "external_api_2_staging_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "external-api-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "external_api2_staging_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "api-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
