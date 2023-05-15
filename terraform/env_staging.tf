@@ -67,7 +67,7 @@ resource "aws_route53_record" "dashboard_api_staging_dns" {
   records = [aws_instance.staging.public_ip]
 }
 
-resource "aws_route53_record" "dashboard_api_2_staging_dns" {
+resource "aws_route53_record" "dashboard_api_16_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "dashboard-api-v2-staging.glade.ng"
   type    = "A"
