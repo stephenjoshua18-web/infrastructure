@@ -67,6 +67,14 @@ resource "aws_route53_record" "dashboard_api_staging_dns" {
   records = [aws_instance.staging.public_ip]
 }
 
+resource "aws_route53_record" "dashboard_api_staging_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "dashboard-api-v2-staging.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
 resource "aws_route53_record" "dashboard_staging_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "dashboard-staging.glade.ng"
@@ -191,6 +199,14 @@ resource "aws_route53_record" "webhook_2_staging_dns" {
 resource "aws_route53_record" "dashboard_api_2_staging_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "dashboard-api-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
+resource "aws_route53_record" "dashboard_api_4_staging_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "dashboard-api-v2-staging.gladefinance.co"
   type    = "A"
   ttl     = 300
   records = [aws_instance.staging.public_ip]
