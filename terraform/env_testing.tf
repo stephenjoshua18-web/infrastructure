@@ -8,7 +8,7 @@ resource "aws_instance" "testing" {
 
   # root disk
   root_block_device {
-    volume_size           = "${var.volume_size}"
+    volume_size           = 50
     volume_type           = "gp2"
     encrypted             = true
     delete_on_termination = true
