@@ -254,6 +254,14 @@ resource "aws_route53_record" "checkout_2_testing_dns" {
   records = [aws_instance.testing.public_ip]
 }
 
+resource "aws_route53_record" "checkout_4_testing_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "checkout-v2-testing.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.testing.public_ip]
+}
+
 resource "aws_route53_record" "mobile_api_2_testing_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "mobile-api-testing.gladefinance.co"
