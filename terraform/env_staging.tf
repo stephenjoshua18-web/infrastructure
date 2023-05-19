@@ -244,6 +244,14 @@ resource "aws_route53_record" "checkout_2_staging_dns" {
   records = [aws_instance.staging.public_ip]
 }
 
+resource "aws_route53_record" "checkout_6_staging_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "checkout-v2-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
 resource "aws_route53_record" "mobile_api_2_staging_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "mobile-api-staging.gladefinance.co"
