@@ -24,7 +24,7 @@ resource "aws_route53_record" "www_external_dns" {
 resource "aws_route53_record" "developer_external_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "developer.gladefinance.co"
-  type    = "A"
+  type    = "CNAME"
   ttl     = 300
-  records = [var.website_ip]
+  records = ["ssl.readmessl.com"]
 }
