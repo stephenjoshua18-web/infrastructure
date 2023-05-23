@@ -27,4 +27,5 @@ resource "aws_route53_record" "developer_external_dns" {
   type    = "CNAME"
   ttl     = 300
   records = ["ssl.readmessl.com"]
+  overwrite = true 
 }
