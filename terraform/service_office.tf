@@ -101,6 +101,15 @@ resource "aws_route53_record" "public_office_api_2_external_dns" {
   records = [aws_instance.office_service.public_ip]
 }
 
+
+resource "aws_route53_record" "public_office_api_v2_external_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "office-api-v2.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.office_service.public_ip]
+}
+
 resource "aws_route53_record" "public_2_office_v2_external_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "office-v2.gladefinance.co"
