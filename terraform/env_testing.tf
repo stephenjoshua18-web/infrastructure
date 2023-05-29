@@ -246,6 +246,16 @@ resource "aws_route53_record" "office_api_2_testing_dns" {
   records = [aws_instance.testing.public_ip]
 }
 
+
+resource "aws_route53_record" "office_api_v2_testing_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "office-api-v2-testing.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.testing.public_ip]
+}
+
+
 resource "aws_route53_record" "checkout_2_testing_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "checkout-testing.gladefinance.co"
