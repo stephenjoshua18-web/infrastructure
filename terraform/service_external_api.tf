@@ -69,6 +69,14 @@ resource "aws_route53_record" "external_api_2_external_dns" {
   records = [aws_instance.external_api_service.public_ip]
 }
 
+resource "aws_route53_record" "external_api_2_external_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "api-v2.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.external_api_service.public_ip]
+}
+
 resource "aws_route53_record" "api_2_external_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "api.gladefinance.co"
