@@ -197,10 +197,26 @@ resource "aws_route53_record" "api3_testing_dns" {
   records = [aws_instance.testing.public_ip]
 }
 
+resource "aws_route53_record" "api31_testing_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "api-v2-testing.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.testing.public_ip]
+}
+
 
 resource "aws_route53_record" "webhook_2_testing_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "webhook-testing.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.testing.public_ip]
+}
+
+resource "aws_route53_record" "webhook_21_testing_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "webhook-v2-testing.gladefinance.co"
   type    = "A"
   ttl     = 300
   records = [aws_instance.testing.public_ip]

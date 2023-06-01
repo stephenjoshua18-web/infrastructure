@@ -77,6 +77,14 @@ resource "aws_route53_record" "webhook_2_prod_dns" {
   records = [aws_instance.webhook_service.public_ip]
 }
 
+resource "aws_route53_record" "webhook_24_prod_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "webhook-v2.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}
+
 resource "aws_route53_record" "webhooks_2_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "webhooks.gladefinance.co"
