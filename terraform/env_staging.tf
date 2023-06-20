@@ -180,6 +180,14 @@ resource "aws_route53_record" "core_2_staging_dns" {
   records = [aws_instance.staging.public_ip]
 }
 
+resource "aws_route53_record" "core_201_staging_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "core-v2-staging.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.staging.public_ip]
+}
+
 resource "aws_route53_record" "db_2_staging_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "db-staging.gladefinance.co"

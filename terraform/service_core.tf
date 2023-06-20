@@ -87,5 +87,13 @@ resource "aws_route53_record" "core_2_dns" {
   records = [aws_eip.core_service_eip.public_ip]
 }
 
+resource "aws_route53_record" "core_202_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "core-v2.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_eip.core_service_eip.public_ip]
+}
+
 
 
