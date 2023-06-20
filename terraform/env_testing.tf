@@ -181,6 +181,14 @@ resource "aws_route53_record" "core_2_testing_dns" {
   records = [aws_instance.testing.public_ip]
 }
 
+resource "aws_route53_record" "core_200_testing_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "core-v2-testing.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.testing.public_ip]
+}
+
 resource "aws_route53_record" "db_2_testing_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "db-testing.gladefinance.co"
