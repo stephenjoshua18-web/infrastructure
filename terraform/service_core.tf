@@ -28,14 +28,6 @@ resource "aws_route53_record" "core_internal_dns" {
 }
 
 
-resource "aws_route53_record" "core_external_dns" {
-  zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "core-external-prod-aws.glade.ng"
-  type    = "A"
-  ttl     = 300
-  records = [aws_eip.core_service_eip.public_ip]
-}
-
 resource "aws_route53_record" "core_prod_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
   name    = "core-prod.glade.ng"
@@ -62,14 +54,6 @@ resource "aws_route53_record" "core_2_internal_dns" {
   records = [aws_instance.core_service.private_ip]
 }
 
-
-resource "aws_route53_record" "core_2_external_dns" {
-  zone_id = aws_route53_zone.gladefinance_zone.zone_id
-  name    = "core-external-prod-aws.gladefinance.co"
-  type    = "A"
-  ttl     = 300
-  records = [aws_eip.core_service_eip.public_ip]
-}
 
 resource "aws_route53_record" "core_2_prod_external_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
