@@ -21,12 +21,5 @@ resource "aws_route53_record" "www_external_dns" {
   records = [var.website_ip]
 }
 
-resource "aws_route53_record" "developer_external_dns" {
-  zone_id = aws_route53_zone.gladefinance_zone.zone_id
-  name    = "developer.gladefinance.co"
-  type    = "A"
-  ttl     = 300
-  records = [var.website_ip]
-}
 
 
