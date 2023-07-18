@@ -58,7 +58,7 @@ resource "aws_route53_record" "webhook_23_internal_dns" {
   name    = "webhook-service.gladefinance.co"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.webhook_service.private_ip]
+  records = [aws_instance.webhook_service.public_ip]
 }
 
 resource "aws_route53_record" "webhook_24_prod_dns" {
