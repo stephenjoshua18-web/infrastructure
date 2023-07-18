@@ -58,7 +58,7 @@ resource "aws_route53_record" "external_api_26_internal_dns" {
   name    = "api-prod.gladefinance.co"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.external_api_service.private_ip]
+  records = [aws_instance.external_api_service.public_ip]
 }
 
 
