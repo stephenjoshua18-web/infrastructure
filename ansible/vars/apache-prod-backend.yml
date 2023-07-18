@@ -63,6 +63,18 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
+  - servername: '{{server_name_gladefinance}}'
+    documentroot: '{{server_dir_gladefinance}}'
+    extra_parameters: |
+      ServerAlias *.gladefinance.co
+      <Directory "/var/www/refactor/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
 
 apache_vhosts_ssl:
   - servername: '{{server_name_gladeng}}'

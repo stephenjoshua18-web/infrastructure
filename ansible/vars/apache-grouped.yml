@@ -193,6 +193,17 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
+  - servername: 'core-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/refactor/public'
+    extra_parameters: |
+      <Directory "/var/www/refactor/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
   - servername: 'db-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/html/public'
     extra_parameters: |
@@ -208,6 +219,17 @@ apache_vhosts:
     documentroot: '/var/www/html/public'
     extra_parameters: |
       <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'webhook-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/refactor/public'
+    extra_parameters: |
+      <Directory "/var/www/refactor/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -248,6 +270,17 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
+  - servername: 'api-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/refactor/public'
+    extra_parameters: |
+      <Directory "/var/www/refactor/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
   - servername: 'mobile-api-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/html/public'
     extra_parameters: |
@@ -281,6 +314,17 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
+  - servername: 'dashboard-api-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/refactor/public'
+    extra_parameters: |
+      <Directory "/var/www/refactor/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
   - servername: 'office-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/web'
     extra_parameters: |
@@ -296,6 +340,17 @@ apache_vhosts:
     documentroot: '/var/www/html/public'
     extra_parameters: |
       <Directory "/var/www/html/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
+  - servername: 'office-api-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/refactor/public'
+    extra_parameters: |
+      <Directory "/var/www/refactor/public">
         AllowOverride All
         Options -Indexes +FollowSymLinks
         Require all granted
@@ -482,6 +537,13 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
+  - servername: 'core-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/core-v2/public'
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
       
   
   - servername: 'db-{{glade_env}}.gladefinance.co'
@@ -493,7 +555,14 @@ apache_vhosts_ssl:
       RewriteEngine on
   
   - servername: 'webhook-{{glade_env}}.gladefinance.co'
-    documentroot: '/var/www/webhook/public'
+    documentroot: '/var/www/webhook-service/public'
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+  - servername: 'webhook-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/webhook-v2/public'
     certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
@@ -518,6 +587,13 @@ apache_vhosts_ssl:
     
   - servername: 'api-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/api/public'
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+  - servername: 'api-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/api-v2/public'
     certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
@@ -561,6 +637,13 @@ apache_vhosts_ssl:
     certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
     extra_parameters: |
       RewriteEngine on
+  - servername: 'dashboard-api-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/dashboard-api-v2/public'
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
 
 
   - servername: 'office-{{glade_env}}.gladefinance.co'
@@ -583,6 +666,14 @@ apache_vhosts_ssl:
 
   - servername: 'office-api-{{glade_env}}.gladefinance.co'
     documentroot: '/var/www/office-api/public'
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
+    extra_parameters: |
+      RewriteEngine on
+  
+  - servername: 'office-api-v2-{{glade_env}}.gladefinance.co'
+    documentroot: '/var/www/office-api-v2/public'
     certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
