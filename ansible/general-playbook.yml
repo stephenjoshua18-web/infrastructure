@@ -110,17 +110,6 @@
   roles:
     - { role: geerlingguy.apache }
 
-- name: Setup Apache on experiment Servers
-  hosts: experiment_servers
-  remote_user: ubuntu
-  become: true
-  vars:
-    glade_env: experiment
-  vars_files:
-    - vars/apache-grouped.yml
-  roles:
-    - { role: geerlingguy.apache }
-
 - name: Setup Apache on Pay Servers
   hosts: pay
   remote_user: ubuntu
