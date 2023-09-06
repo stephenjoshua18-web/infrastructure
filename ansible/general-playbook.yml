@@ -4,43 +4,43 @@
   remote_user: ubuntu
   become: true
   tasks:
-    # - name: set timezone to Africa/Lagos
-    #   timezone:
-    #     name: Africa/Lagos
-    # - name: adding existing user "ubuntu" to group sudo
-    #   user:
-    #     name: "ubuntu"
-    #     groups: sudo
-    #     append: yes
-    # - name: "Create required directories in for webserver"
-    #   file:
-    #     path: "{{ item }}"
-    #     state: directory
-    #     owner: root
-    #     group: root
-    #     mode: u=rwx,g=x,o=x
-    #   with_items:
-    #   - /var/www/html/public
-    #   - /var/www/refactor/public
-    #   - /opt/glade/logs
-    #   - /opt/glade/keys
-    # - name: create default ssl directory
-    #   file:
-    #     path: /opt/glade/ssl
-    #     state: directory
-    #     mode: 0700
-    # - name: copy ssl files
-    #   become: true 
-    #   copy:
-    #     src: ssl/
-    #     dest: /opt/glade/ssl
-    #     mode: 0600
-    # - name: Install acl package
-    #   package:
-    #     name: "acl"
-    #     state: present
-    # - name: resolve apt update issue
-    #   command: 'apt update'
+    - name: set timezone to Africa/Lagos
+      timezone:
+        name: Africa/Lagos
+    - name: adding existing user "ubuntu" to group sudo
+      user:
+        name: "ubuntu"
+        groups: sudo
+        append: yes
+    - name: "Create required directories in for webserver"
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: root
+        group: root
+        mode: u=rwx,g=x,o=x
+      with_items:
+      - /var/www/html/public
+      - /var/www/refactor/public
+      - /opt/glade/logs
+      - /opt/glade/keys
+    - name: create default ssl directory
+      file:
+        path: /opt/glade/ssl
+        state: directory
+        mode: 0700
+    - name: copy ssl files
+      become: true 
+      copy:
+        src: ssl/
+        dest: /opt/glade/ssl
+        mode: 0600
+    - name: Install acl package
+      package:
+        name: "acl"
+        state: present
+    - name: resolve apt update issue
+      command: 'apt update'
     - name: Set up multiple authorized keys
       ansible.posix.authorized_key:
         user: ubuntu
@@ -49,508 +49,508 @@
       with_file:
         - public_keys/abuango
         - public_keys/joshua_okorie
-#     - name: Ensure Redis is installed.
-#       apt:
-#         name: "redis-server"
-#         state: present
-#     - name: preSetup for redis
-#       command: 'mkdir -p /var/run/redis/'
-#     - name: preSetup for redis
-#       command: 'usermod -g www-data redis'
-#     - name: preSetup for redis
-#       command: 'chown -R redis:www-data /var/run/redis'
+    - name: Ensure Redis is installed.
+      apt:
+        name: "redis-server"
+        state: present
+    - name: preSetup for redis
+      command: 'mkdir -p /var/run/redis/'
+    - name: preSetup for redis
+      command: 'usermod -g www-data redis'
+    - name: preSetup for redis
+      command: 'chown -R redis:www-data /var/run/redis'
     
-# - name: Set Glade Log Permissions
-#   hosts: all
-#   remote_user: ubuntu
-#   become: true
-#   tasks:
-#     - name: Set Glade Log Permissions
-#       command: "chmod -R 777 /opt/glade/logs"
+- name: Set Glade Log Permissions
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Set Glade Log Permissions
+      command: "chmod -R 777 /opt/glade/logs"
 
-# - hosts: all
-#   remote_user: ubuntu
-#   become: true
-#   vars_files:
-#     - vars/redis.yml
-#   roles:
-#     - role: geerlingguy.redis
+- hosts: all
+  remote_user: ubuntu
+  become: true
+  vars_files:
+    - vars/redis.yml
+  roles:
+    - role: geerlingguy.redis
 
-# - name: Setup Apache on testing Servers
-#   hosts: test_servers
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     glade_env: testing
-#   vars_files:
-#     - vars/apache-grouped.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on testing Servers
+  hosts: test_servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: testing
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
 
-# - name: Setup Apache on sandbox Servers
-#   hosts: sandbox_servers
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     glade_env: sandbox
-#   vars_files:
-#     - vars/apache-grouped.yml
-#   roles:
-#     - { role: geerlingguy.apache }
-
-
-# - name: Setup Apache on staging Servers
-#   hosts: staging_servers
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     glade_env: staging
-#   vars_files:
-#     - vars/apache-grouped.yml
-#   roles:
-#     - { role: geerlingguy.apache }
-
-# - name: Setup Apache on Pay Servers
-#   hosts: pay
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     frontend_server_name_gladeng: pay.glade.ng
-#     backend_server_name_gladeng: pay-api.glade.ng
-#     frontend_server_name_gladefinance: pay.gladefinance.co
-#     backend_server_name_gladefinance: pay-api.gladefinance.co
-
-#   vars_files:
-#     - vars/apache-prod-front-back.yml
-#   roles:
-#     - { role: geerlingguy.apache }
-
-# - name: Setup Apache on Core Servers
-#   hosts: core
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     server_name_gladeng: core-prod.glade.ng
-#     server_dir_gladeng: /var/www/html/public
-#     server_name_gladefinance: core-prod.gladefinance.co
-#     server_dir_gladefinance: /var/www/html/public
-#   vars_files:
-#     - vars/apache-prod-backend.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on sandbox Servers
+  hosts: sandbox_servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: sandbox
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on DB Servers
-#   hosts: db_service
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     server_name_gladeng: db-external-prod-aws.glade.ng
-#     server_dir_gladeng: /var/www/html/public
-#     server_name_gladefinance: db-external-prod-aws.gladefinance.co
-#     server_dir_gladefinance: /var/www/html/public
-#   vars_files:
-#     - vars/apache-prod-backend.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on staging Servers
+  hosts: staging_servers
+  remote_user: ubuntu
+  become: true
+  vars:
+    glade_env: staging
+  vars_files:
+    - vars/apache-grouped.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on Pay Servers
+  hosts: pay
+  remote_user: ubuntu
+  become: true
+  vars:
+    frontend_server_name_gladeng: pay.glade.ng
+    backend_server_name_gladeng: pay-api.glade.ng
+    frontend_server_name_gladefinance: pay.gladefinance.co
+    backend_server_name_gladefinance: pay-api.gladefinance.co
+
+  vars_files:
+    - vars/apache-prod-front-back.yml
+  roles:
+    - { role: geerlingguy.apache }
+
+- name: Setup Apache on Core Servers
+  hosts: core
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name_gladeng: core-prod.glade.ng
+    server_dir_gladeng: /var/www/html/public
+    server_name_gladefinance: core-prod.gladefinance.co
+    server_dir_gladefinance: /var/www/html/public
+  vars_files:
+    - vars/apache-prod-backend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on dashboard Servers
-#   hosts: dashboard
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     frontend_server_name_gladeng: dashboard.glade.ng
-#     backend_server_name_gladeng: dashboard-api.glade.ng
-#     frontend_server_name_gladefinance: dashboard.gladefinance.co
-#     backend_server_name_gladefinance: dashboard-api.gladefinance.co
-#   vars_files:
-#     - vars/apache-prod-front-back.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on DB Servers
+  hosts: db_service
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name_gladeng: db-external-prod-aws.glade.ng
+    server_dir_gladeng: /var/www/html/public
+    server_name_gladefinance: db-external-prod-aws.gladefinance.co
+    server_dir_gladefinance: /var/www/html/public
+  vars_files:
+    - vars/apache-prod-backend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on checkout Servers
-#   hosts: checkout
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     server_name_gladeng: checkout-external-prod-aws.glade.ng
-#     server_dir_gladeng: /var/www/html/public
-#     server_name_gladefinance: checkout-external-prod-aws.gladefinance.co
-#     server_dir_gladefinance: /var/www/html/public
-#   vars_files:
-#     - vars/apache-prod-backend.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on dashboard Servers
+  hosts: dashboard
+  remote_user: ubuntu
+  become: true
+  vars:
+    frontend_server_name_gladeng: dashboard.glade.ng
+    backend_server_name_gladeng: dashboard-api.glade.ng
+    frontend_server_name_gladefinance: dashboard.gladefinance.co
+    backend_server_name_gladefinance: dashboard-api.gladefinance.co
+  vars_files:
+    - vars/apache-prod-front-back.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on office Servers
-#   hosts: office
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     frontend_server_name_gladeng: office.glade.ng
-#     backend_server_name_gladeng: office-api.glade.ng
-#     frontend_server_name_gladefinance: office.gladefinance.co
-#     backend_server_name_gladefinance: office-api.gladefinance.co
-#   vars_files:
-#     - vars/apache-prod-front-back.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on checkout Servers
+  hosts: checkout
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name_gladeng: checkout-external-prod-aws.glade.ng
+    server_dir_gladeng: /var/www/html/public
+    server_name_gladefinance: checkout-external-prod-aws.gladefinance.co
+    server_dir_gladefinance: /var/www/html/public
+  vars_files:
+    - vars/apache-prod-backend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on qc Servers
-#   hosts: qc
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     server_name_gladeng: qc-external-prod-aws.glade.ng
-#     server_dir_gladeng: /var/www/html/public
-#     server_name_gladefinance: qc-external-prod-aws.gladefinance.co
-#     server_dir_gladefinance: /var/www/html/public
-#   vars_files:
-#     - vars/apache-prod-backend.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on office Servers
+  hosts: office
+  remote_user: ubuntu
+  become: true
+  vars:
+    frontend_server_name_gladeng: office.glade.ng
+    backend_server_name_gladeng: office-api.glade.ng
+    frontend_server_name_gladefinance: office.gladefinance.co
+    backend_server_name_gladefinance: office-api.gladefinance.co
+  vars_files:
+    - vars/apache-prod-front-back.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on webhook Servers
-#   hosts: webhook
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     server_name_gladeng: webhoooks.glade.ng
-#     server_dir_gladeng: /var/www/html/public
-#     server_name_gladefinance: webhoook.gladefinance.co
-#     server_dir_gladefinance: /var/www/html/public
-#   vars_files:
-#     - vars/apache-prod-backend.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on qc Servers
+  hosts: qc
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name_gladeng: qc-external-prod-aws.glade.ng
+    server_dir_gladeng: /var/www/html/public
+    server_name_gladefinance: qc-external-prod-aws.gladefinance.co
+    server_dir_gladefinance: /var/www/html/public
+  vars_files:
+    - vars/apache-prod-backend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on mobile Servers
-#   hosts: mobile
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     server_name_gladeng: mobile-api-external-prod-aws.glade.ng
-#     server_dir_gladeng: /var/www/html/public
-#     server_name_gladefinance: mobile-api-external-prod-aws.gladefinance.co
-#     server_dir_gladefinance: /var/www/html/public
-#   vars_files:
-#     - vars/apache-prod-backend.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on webhook Servers
+  hosts: webhook
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name_gladeng: webhoooks.glade.ng
+    server_dir_gladeng: /var/www/html/public
+    server_name_gladefinance: webhoook.gladefinance.co
+    server_dir_gladefinance: /var/www/html/public
+  vars_files:
+    - vars/apache-prod-backend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on Proxy
-#   hosts: proxy
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     server_name_gladeng: proxy.glade.ng
-#     server_dir_gladeng: /var/www/html/
-#     server_name_gladefinance: proxy.gladefinance.co
-#     server_dir_gladefinance: /var/www/html/
-#   vars_files:
-#     - vars/apache-prod-backend.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on mobile Servers
+  hosts: mobile
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name_gladeng: mobile-api-external-prod-aws.glade.ng
+    server_dir_gladeng: /var/www/html/public
+    server_name_gladefinance: mobile-api-external-prod-aws.gladefinance.co
+    server_dir_gladefinance: /var/www/html/public
+  vars_files:
+    - vars/apache-prod-backend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Setup Apache on external api Servers
-#   hosts: external_api
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     server_name_gladeng: api-prod.glade.ng
-#     server_dir_gladeng: /var/www/html/public
-#     server_name_gladefinance: api-prod.gladefinance.co
-#     server_dir_gladefinance: /var/www/html/public
-#   vars_files:
-#     - vars/apache-prod-backend.yml
-#   roles:
-#     - { role: geerlingguy.apache }
+- name: Setup Apache on Proxy
+  hosts: proxy
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name_gladeng: proxy.glade.ng
+    server_dir_gladeng: /var/www/html/
+    server_name_gladefinance: proxy.gladefinance.co
+    server_dir_gladefinance: /var/www/html/
+  vars_files:
+    - vars/apache-prod-backend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Remove old apache configs
-#   hosts: all
-#   remote_user: ubuntu
-#   become: true
-#   tasks:
-#     - name: Remove file (delete file)
-#       ansible.builtin.file:
-#         path: '{{ item }}'
-#         state: absent
-#       with_items:
-#         - /etc/apache2/sites-available/000-default.conf
-#         - /etc/apache2/sites-available/default-ssl.conf
-
-# - name: Copy default Websites Server apache config
-#   hosts: websites
-#   remote_user: ubuntu
-#   become: true
-#   tasks:
-#     - name: Compy config file
-#       ansible.builtin.copy:
-#         src: templates/websites-000-default.conf-templates
-#         dest: /etc/apache2/sites-available/000-default.conf
-#         owner: root
-#         group: root
-#         mode: '0644'
-#         backup: yes
-
-# - name: Trigger Apache Restart
-#   hosts: all
-#   remote_user: ubuntu
-#   become: true
-#   tasks:
-#     - name: Restart Apache
-#       command: "systemctl restart apache2"
-
-# - name: Setup PHP Server
-#   hosts: php-servers
-#   remote_user: ubuntu
-#   become: true
-#   vars_files:
-#     - vars/php-prod.yml
-#   vars:
-#     php_version: '8.0'
-#   roles:
-#     - geerlingguy.php-versions
-#     - geerlingguy.php
-
-# - name: Trigger Apache Restart
-#   hosts: all
-#   remote_user: ubuntu
-#   become: true
-#   tasks:
-#     - name: Restart Apache
-#       command: "systemctl restart apache2"
+- name: Setup Apache on external api Servers
+  hosts: external_api
+  remote_user: ubuntu
+  become: true
+  vars:
+    server_name_gladeng: api-prod.glade.ng
+    server_dir_gladeng: /var/www/html/public
+    server_name_gladefinance: api-prod.gladefinance.co
+    server_dir_gladefinance: /var/www/html/public
+  vars_files:
+    - vars/apache-prod-backend.yml
+  roles:
+    - { role: geerlingguy.apache }
 
 
-# - name: Trigger Secrets Deployment
+- name: Remove old apache configs
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Remove file (delete file)
+      ansible.builtin.file:
+        path: '{{ item }}'
+        state: absent
+      with_items:
+        - /etc/apache2/sites-available/000-default.conf
+        - /etc/apache2/sites-available/default-ssl.conf
+
+- name: Copy default Websites Server apache config
+  hosts: websites
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Compy config file
+      ansible.builtin.copy:
+        src: templates/websites-000-default.conf-templates
+        dest: /etc/apache2/sites-available/000-default.conf
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+- name: Trigger Apache Restart
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Restart Apache
+      command: "systemctl restart apache2"
+
+- name: Setup PHP Server
+  hosts: php-servers
+  remote_user: ubuntu
+  become: true
+  vars_files:
+    - vars/php-prod.yml
+  vars:
+    php_version: '8.0'
+  roles:
+    - geerlingguy.php-versions
+    - geerlingguy.php
+
+- name: Trigger Apache Restart
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Restart Apache
+      command: "systemctl restart apache2"
+
+
+- name: Trigger Secrets Deployment
   
-#   hosts: localhost
-#   vars:
-#     ansible_connection: local
-#     ansible_python_interpreter: "{{ ansible_playbook_python }}"
-#     keys_manager_project: 138
-#   tasks:
-#     - name: Trigger Pipelines for Secrets
-#       command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ keys_manager_project }}/pipeline?ref=master'"
-#       when: trigger_ci_keys  == "1"
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    keys_manager_project: 138
+  tasks:
+    - name: Trigger Pipelines for Secrets
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ keys_manager_project }}/pipeline?ref=master'"
+      when: trigger_ci_keys  == "1"
 
-# - name: Trigger Testing Branch pipelines
-#   hosts: localhost
-#   vars:
-#     ansible_connection: local
-#     ansible_python_interpreter: "{{ ansible_playbook_python }}"
-#     gitlab_pat: 
-#   tasks:
-#     - name: Trigger Pipelines for testing
-#       command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=testing'"
-#       with_items:
-#         - 317 #core
-#         - 316 #db
-#         - 345 #webhoook
-#         - 344 #checkout
-#         - 322 #dashboard-api
-#         - 320 #office
-#         - 328 #office-api
-#         - 306 #dashboard
-#         - 315 #external-api
-#         - 346 #pay-link
-#         - 348 #website
-#       when: trigger_ci_testing  == "1"
+- name: Trigger Testing Branch pipelines
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    gitlab_pat: 
+  tasks:
+    - name: Trigger Pipelines for testing
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=testing'"
+      with_items:
+        - 317 #core
+        - 316 #db
+        - 345 #webhoook
+        - 344 #checkout
+        - 322 #dashboard-api
+        - 320 #office
+        - 328 #office-api
+        - 306 #dashboard
+        - 315 #external-api
+        - 346 #pay-link
+        - 348 #website
+      when: trigger_ci_testing  == "1"
 
-# - name: Trigger Sandbox Branch pipelines
-#   hosts: localhost
-#   vars:
-#     ansible_connection: local
-#     ansible_python_interpreter: "{{ ansible_playbook_python }}"
-#     gitlab_pat: 
-#   tasks:
-#     - name: Trigger Pipelines for sandbox
-#       command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=sandbox'"
-#       with_items:
-#         - 317 #core
-#         - 316 #db
-#         - 345 #webhoook
-#         - 344 #checkout
-#         - 322 #dashboard-api
-#         - 320 #office
-#         - 328 #office-api
-#         - 306 #dashboard
-#         - 315 #external-api
-#         - 346 #pay-link
-#         - 348 #website
-#       when: trigger_ci_sandbox  == "1"
-
-
-# - name: Trigger staging Branch pipelines
-#   hosts: localhost
-#   vars:
-#     ansible_connection: local
-#     ansible_python_interpreter: "{{ ansible_playbook_python }}"
-#     gitlab_pat: 
-#   tasks:
-#     - name: Trigger Pipelines for staging
-#       command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=staging'"
-#       with_items:
-#         - 317 #core
-#         - 316 #db
-#         - 345 #webhoook
-#         - 344 #checkout
-#         - 322 #dashboard-api
-#         - 320 #office
-#         - 328 #office-api
-#         - 306 #dashboard
-#         - 315 #external-api
-#         - 346 #pay-link
-#         - 348 #website
-#       when: trigger_ci_staging  == "1"
-
-# - name: Trigger production Branch pipelines
-#   hosts: localhost
-#   vars:
-#     ansible_connection: local
-#     ansible_python_interpreter: "{{ ansible_playbook_python }}"
-#     gitlab_pat: 
-#   tasks:
-#     - name: Trigger Pipelines for production
-#       command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=production'"
-#       with_items:
-#         - 317 #core
-#         - 316 #db
-#         - 345 #webhoook
-#         - 344 #checkout
-#         - 322 #dashboard-api
-#         - 320 #office
-#         - 328 #office-api
-#         - 306 #dashboard
-#         - 315 #external-api
-#         - 346 #pay-link
-#         - 348 #website
-#       when: trigger_ci_production  == "1"
+- name: Trigger Sandbox Branch pipelines
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    gitlab_pat: 
+  tasks:
+    - name: Trigger Pipelines for sandbox
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=sandbox'"
+      with_items:
+        - 317 #core
+        - 316 #db
+        - 345 #webhoook
+        - 344 #checkout
+        - 322 #dashboard-api
+        - 320 #office
+        - 328 #office-api
+        - 306 #dashboard
+        - 315 #external-api
+        - 346 #pay-link
+        - 348 #website
+      when: trigger_ci_sandbox  == "1"
 
 
-# - name: grafana monitoring
-#   hosts: all
-#   remote_user: ubuntu
-#   become: true
-#   vars:
-#     loki_server: grafana.glade.ng
-#     glade_host_name: '{{  inventory_hostname  }}'
-#     promtail_version: 2.7.1
-#   tasks:
-#     - name: install acl package
-#       ansible.builtin.apt:
-#         name: acl
-#         state: present
+- name: Trigger staging Branch pipelines
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    gitlab_pat: 
+  tasks:
+    - name: Trigger Pipelines for staging
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=staging'"
+      with_items:
+        - 317 #core
+        - 316 #db
+        - 345 #webhoook
+        - 344 #checkout
+        - 322 #dashboard-api
+        - 320 #office
+        - 328 #office-api
+        - 306 #dashboard
+        - 315 #external-api
+        - 346 #pay-link
+        - 348 #website
+      when: trigger_ci_staging  == "1"
 
-#     - name: create promtail group
-#       ansible.builtin.group:
-#         name: promtail
-#         state: present
+- name: Trigger production Branch pipelines
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+    gitlab_pat: 
+  tasks:
+    - name: Trigger Pipelines for production
+      command: "curl --request POST --header 'PRIVATE-TOKEN: {{ gitlab_pat }}' 'https://git.glade.ng/api/v4/projects/{{ item }}/pipeline?ref=production'"
+      with_items:
+        - 317 #core
+        - 316 #db
+        - 345 #webhoook
+        - 344 #checkout
+        - 322 #dashboard-api
+        - 320 #office
+        - 328 #office-api
+        - 306 #dashboard
+        - 315 #external-api
+        - 346 #pay-link
+        - 348 #website
+      when: trigger_ci_production  == "1"
 
-#     - name: create promtail user
-#       ansible.builtin.user:
-#         name: promtail
-#         groups:
-#           - promtail
-#           - systemd-journal
-#           - adm
-#         state: present
-#         system: true
 
-#     - name: set facl to allow promtail user to read /var/log contents
-#       ansible.posix.acl:
-#         path: /var/log
-#         entity: promtail
-#         etype: user
-#         permissions: rX
-#         state: present
+- name: grafana monitoring
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  vars:
+    loki_server: grafana.glade.ng
+    glade_host_name: '{{  inventory_hostname  }}'
+    promtail_version: 2.7.1
+  tasks:
+    - name: install acl package
+      ansible.builtin.apt:
+        name: acl
+        state: present
 
-#     - name: make promtail user owner of /tmp/positions.yaml
-#       ansible.builtin.file:
-#         path: /tmp/positions.yaml
-#         owner: promtail
-#         group: promtail
-#         state: touch
-#         mode: 0750
-#       changed_when: false
+    - name: create promtail group
+      ansible.builtin.group:
+        name: promtail
+        state: present
 
-#     - name: install unzip package
-#       ansible.builtin.apt:
-#         name: unzip
-#         state: present
+    - name: create promtail user
+      ansible.builtin.user:
+        name: promtail
+        groups:
+          - promtail
+          - systemd-journal
+          - adm
+        state: present
+        system: true
 
-#     - name: check if binary exists
-#       ansible.builtin.stat:
-#         path: /usr/bin/promtail-linux-amd64
-#       register: binary
+    - name: set facl to allow promtail user to read /var/log contents
+      ansible.posix.acl:
+        path: /var/log
+        entity: promtail
+        etype: user
+        permissions: rX
+        state: present
 
-#     - name: check promtail version
-#       command: "sudo promtail-linux-amd64 --version"
-#       register: promtail_version_check
-#       when: binary.stat.exists
-#       changed_when: false
+    - name: make promtail user owner of /tmp/positions.yaml
+      ansible.builtin.file:
+        path: /tmp/positions.yaml
+        owner: promtail
+        group: promtail
+        state: touch
+        mode: 0750
+      changed_when: false
 
-#     - name: install promtail if its not present
-#       ansible.builtin.unarchive:
-#         src: "https://github.com/grafana/loki/releases/download/v\
-#             {{  promtail_version  }}/promtail-linux-amd64.zip"
-#         dest: /usr/bin/
-#         remote_src: true
-#       tags:
-#         - loki
-#       when: (not binary.stat.exists)
+    - name: install unzip package
+      ansible.builtin.apt:
+        name: unzip
+        state: present
 
-#     - name: template systemd unit file
-#       ansible.builtin.template:
-#         src: templates/promtail.service.j2
-#         dest: /etc/systemd/system/promtail.service
-#         owner: root
-#         group: root
-#         mode: 0755
-#       tags:
-#         - loki
+    - name: check if binary exists
+      ansible.builtin.stat:
+        path: /usr/bin/promtail-linux-amd64
+      register: binary
 
-#     - name: reload systemd daemon
-#       ansible.builtin.systemd:
-#         daemon_reload: true
-#       tags:
-#         - loki
+    - name: check promtail version
+      command: "sudo promtail-linux-amd64 --version"
+      register: promtail_version_check
+      when: binary.stat.exists
+      changed_when: false
 
-#     - name: make directory for promtail config
-#       ansible.builtin.file:
-#         path: /etc/promtail
-#         state: directory
-#         owner: root
-#         group: root
-#         mode: 0644
+    - name: install promtail if its not present
+      ansible.builtin.unarchive:
+        src: "https://github.com/grafana/loki/releases/download/v\
+            {{  promtail_version  }}/promtail-linux-amd64.zip"
+        dest: /usr/bin/
+        remote_src: true
+      tags:
+        - loki
+      when: (not binary.stat.exists)
 
-#     - name: template promtail config file
-#       ansible.builtin.template:
-#         src: templates/promtail.yml.j2
-#         dest: /usr/local/bin/config-promtail.yml
-#         owner: root
-#         group: root
-#         mode: 0644
+    - name: template systemd unit file
+      ansible.builtin.template:
+        src: templates/promtail.service.j2
+        dest: /etc/systemd/system/promtail.service
+        owner: root
+        group: root
+        mode: 0755
+      tags:
+        - loki
 
-#     - name: restart promtail
-#       become: true
-#       ansible.builtin.systemd:
-#         name: promtail
-#         enabled: true
-#         state: started
-#       changed_when: false
+    - name: reload systemd daemon
+      ansible.builtin.systemd:
+        daemon_reload: true
+      tags:
+        - loki
 
-#     - name: restart promtail
-#       ansible.builtin.systemd:
-#         name: promtail
-#         state: restarted
-#         enabled: true
+    - name: make directory for promtail config
+      ansible.builtin.file:
+        path: /etc/promtail
+        state: directory
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: template promtail config file
+      ansible.builtin.template:
+        src: templates/promtail.yml.j2
+        dest: /usr/local/bin/config-promtail.yml
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: restart promtail
+      become: true
+      ansible.builtin.systemd:
+        name: promtail
+        enabled: true
+        state: started
+      changed_when: false
+
+    - name: restart promtail
+      ansible.builtin.systemd:
+        name: promtail
+        state: restarted
+        enabled: true
