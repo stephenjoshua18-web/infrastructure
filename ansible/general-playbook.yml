@@ -41,6 +41,8 @@
         state: present
     - name: resolve apt update issue
       command: 'apt update'
+    - name: Updates apt cache
+      action: apt update_cache=true
     - name: Set up multiple authorized keys
       ansible.posix.authorized_key:
         user: ubuntu
