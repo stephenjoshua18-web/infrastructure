@@ -27,10 +27,17 @@ resource "aws_route53_record" "webhook_internal_dns" {
   records = [aws_instance.webhook_service.private_ip]
 }
 
-
-resource "aws_route53_record" "webhooks_dns" {
+resource "aws_route53_record" "webhook_external_dns" {
   zone_id = aws_route53_zone.gladeng_zone.zone_id
-  name    = "webhooks.glade.ng"
+  name    = "webhook-external-prod-aws.glade.ng"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}
+
+resource "aws_route53_record" "webhook_prod_dns" {
+  zone_id = aws_route53_zone.gladeng_zone.zone_id
+  name    = "webhook-service-prod.glade.ng"
   type    = "A"
   ttl     = 300
   records = [aws_instance.webhook_service.public_ip]
@@ -45,6 +52,7 @@ resource "aws_route53_record" "webhooks_dns" {
 }
 
 
+
 resource "aws_route53_record" "webhook_2_internal_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "webhook-internal-prod-aws.gladefinance.co"
@@ -53,9 +61,17 @@ resource "aws_route53_record" "webhook_2_internal_dns" {
   records = [aws_instance.webhook_service.private_ip]
 }
 
+resource "aws_route53_record" "webhook_2_external_dns" {
+  zone_id = aws_route53_zone.gladefinance_zone.zone_id
+  name    = "webhook-external-prod-aws.gladefinance.co"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.webhook_service.public_ip]
+}
+
 resource "aws_route53_record" "webhook_2_prod_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
-  name    = "webhook-service.gladefinance.co"
+  name    = "webhook-service-prod.gladefinance.co"
   type    = "A"
   ttl     = 300
   records = [aws_instance.webhook_service.public_ip]
@@ -69,7 +85,7 @@ resource "aws_route53_record" "webhook_24_prod_dns" {
   records = [aws_instance.webhook_service.public_ip]
 }
 
-resource "aws_route53_record" "webhooks_2_dns" {
+resource "aws_route53_record" "webhooks_27_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "webhooks.gladefinance.co"
   type    = "A"

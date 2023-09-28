@@ -63,7 +63,7 @@ resource "aws_route53_record" "core_2_prod_external_dns" {
   records = [aws_eip.core_service_eip.public_ip]
 }
 
-resource "aws_route53_record" "core_2_dns" {
+resource "aws_route53_record" "core_28_dns" {
   zone_id = aws_route53_zone.gladefinance_zone.zone_id
   name    = "core.gladefinance.co"
   type    = "A"

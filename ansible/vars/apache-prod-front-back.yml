@@ -75,6 +75,18 @@ apache_vhosts:
         ReWriteCond %{HTTP:X-Forwarded-Proto} !https
         ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
       </Directory>
+  - servername: '{{backend_server_name_gladefinance}}'
+    documentroot: '/var/www/refactor/public'
+    extra_parameters: |
+      ServerAlias *.gladefinance.co
+      <Directory "/var/www/refactor/public">
+        AllowOverride All
+        Options -Indexes +FollowSymLinks
+        Require all granted
+        ReWriteEngine on
+        ReWriteCond %{HTTP:X-Forwarded-Proto} !https
+        ReWriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+      </Directory>
   - servername: '{{frontend_server_name_gladefinance}}'
     documentroot: '/var/www/web'
     extra_parameters: |
@@ -115,6 +127,14 @@ apache_vhosts_ssl:
 
   - servername: '{{backend_server_name_gladefinance}}'
     documentroot: '/var/www/html/public'
+    certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
+    certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
+    certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"
+    extra_parameters: |
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+  - servername: '{{backend_server_name_gladefinance}}'
+    documentroot: '/var/www/refactor/public'
     certificate_file: "/opt/glade/ssl/gladefinance.crt-file"
     certificate_key_file: "/opt/glade/ssl/gladefinance.key-file"
     certificate_chain_file: "/opt/glade/ssl/gladefinance.bundle-file"

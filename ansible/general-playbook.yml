@@ -21,6 +21,7 @@
         mode: u=rwx,g=x,o=x
       with_items:
       - /var/www/html/public
+      - /var/www/refactor/public
       - /opt/glade/logs
       - /opt/glade/keys
     - name: create default ssl directory
@@ -109,17 +110,6 @@
   roles:
     - { role: geerlingguy.apache }
 
-- name: Setup Apache on experiment Servers
-  hosts: experiment_servers
-  remote_user: ubuntu
-  become: true
-  vars:
-    glade_env: experiment
-  vars_files:
-    - vars/apache-grouped.yml
-  roles:
-    - { role: geerlingguy.apache }
-
 - name: Setup Apache on Pay Servers
   hosts: pay
   remote_user: ubuntu
@@ -140,9 +130,9 @@
   remote_user: ubuntu
   become: true
   vars:
-    server_name_gladeng: core-external-prod-aws.glade.ng
+    server_name_gladeng: core-prod.glade.ng
     server_dir_gladeng: /var/www/html/public
-    server_name_gladefinance: core-external-prod-aws.gladefinance.co
+    server_name_gladefinance: core-prod.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
     - vars/apache-prod-backend.yml
@@ -230,9 +220,9 @@
   remote_user: ubuntu
   become: true
   vars:
-    server_name_gladeng: webhoook-external-prod-aws.glade.ng
+    server_name_gladeng: webhoooks.glade.ng
     server_dir_gladeng: /var/www/html/public
-    server_name_gladefinance: webhoook-external-prod-aws.gladefinance.co
+    server_name_gladefinance: webhoook.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
     - vars/apache-prod-backend.yml
@@ -275,9 +265,9 @@
   remote_user: ubuntu
   become: true
   vars:
-    server_name_gladeng: external-api-external-prod-aws.glade.ng
+    server_name_gladeng: api-prod.glade.ng
     server_dir_gladeng: /var/www/html/public
-    server_name_gladefinance: external-api-external-prod-aws.gladefinance.co
+    server_name_gladefinance: api-prod.gladefinance.co
     server_dir_gladefinance: /var/www/html/public
   vars_files:
     - vars/apache-prod-backend.yml
